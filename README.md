@@ -18,12 +18,16 @@
 - Became the Chief Organizer of the Webinar entitled "Manage Your Time Wisely for Success in College" with a Total of 68 Participants.
 
 ## Projects
-### Customer Segmentation on E-commerce
-[Publication](https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4)
+### Customer Segmentation Using RFM Analysis and K-means with Prediction
+[Medium Story](https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4)
+[Notebooks]()
 
 Developed objective strategy for discovering optimal EEG bands based on signal power spectra using **Python**. This data-driven approach led to better characterization of the underlying power spectrum by identifying bands that outperformed the more commonly used band boundaries by a factor of two. The proposed method provides a fully automated and flexible approach to capturing key signal components and possibly discovering new indices of brain activity.
 
-![EEG Band Discovery](/assets/customer-segmentation-social)
+![EEG Band Discovery](/assets/customer-segmentation-social.png)
+
+### Alzheimer's Disease Prediction on Patient
+[Noteboook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Alzheimer%20Classification.ipynb)
 
 ## Talks & Lectures
 - Mentor: AI Machine Learning - Lokpro Camp Batch 1, June 2024
