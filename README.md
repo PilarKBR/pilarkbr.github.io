@@ -4,7 +4,7 @@
 
 Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm a Final Semester Semester Computer Science Undergraduate Student at Pakuan University. I'm a very curious and detail-oriented person, therefore I am highly motivated to always be learning and adaptive to new things, and that is why I am very interested in Data-related issues
 
-#### Technical Skills: Python, SQL, Looker Studio, Excel
+#### Technical Skills: Python, SQL, Tableau, Power BI, Looker Studio, Excel
 
 ## Projects
 - ### Customer Segmentation Using RFM Analysis and K-means with Prediction
