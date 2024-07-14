@@ -10,10 +10,12 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
 - ### Customer Segmentation Using RFM Analysis and K-means with Prediction
 
   ![Theme](/assets/customer-segmentation-social.png)
+
+  - #### Workflow Explanatory
+    [Medium Story in Bahasa](https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4)
   
-  [Medium Story in Bahasa](https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4)
-  
-  To see the details of the notebook used can be accessed through [Notebooks (Include Final Project on Startup Campus & Medium Story Needs)](https://colab.research.google.com/drive/1kC1dS0MDsBoOxX-HXtIWr1e7uJVTd_HS?usp=sharing) Because Github cannot load large files
+  - #### Notebooks
+    To see the details of the notebook used can be accessed through [Notebooks (Include Final Project on Startup Campus & Medium Story Needs)](https://colab.research.google.com/drive/1kC1dS0MDsBoOxX-HXtIWr1e7uJVTd_HS?usp=sharing) Because Github cannot load large files
 
   - #### Goal
     Developed objective strategy for Understand customers in depth and identify groups of customers who have similar needs, preferences, or buying behaviors using **RFM Analysis** with then customer segmentating is done using **K-means** and the predicted results of their total spending using **ARIMA** 
@@ -47,10 +49,13 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
 - ### Alzheimer's Disease Prediction on Patient
 
   ![Theme](/assets/049818600_1605522157-Ilustrasi-Alzheimer-Sama-dengan-Demensia-shutterstock_754295458.jpg)
-  
-  [Noteboook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Classification/Alzhemer%20Pred/Alzheimer%20Classification.ipynb)
-  
-  Do some test on many common Classification Alghorithm to detect alzhemier disease on some patient based on their medical history and alzheimer status, And Ada Boost Classifier Algorithm (After Hyperparameter tuning with Estimator Parameters: learning_rate=1.1866863319867205 and n_estimators=25) is completely suitable for detecting alzheimer's disease in patients with 81,4% accuracy on Precision metrics      
+
+    - #### Notebooks
+
+      [Noteboook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Classification/Alzhemer%20Pred/Alzheimer%20Classification.ipynb)
+
+    - #### Results
+      Do some test on many common Classification Alghorithm to detect alzhemier disease on some patient based on their medical history and alzheimer status, And Ada Boost Classifier Algorithm (After Hyperparameter tuning with Estimator Parameters: learning_rate=1.1866863319867205 and n_estimators=25) is completely suitable for detecting alzheimer's disease in patients with 81,4% accuracy on Precision metrics      
 
 ## Publications
 - [Data Science on Medium](https://medium.com/@pilarkbr)
