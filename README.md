@@ -48,7 +48,7 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
 
   ![Theme](/assets/049818600_1605522157-Ilustrasi-Alzheimer-Sama-dengan-Demensia-shutterstock_754295458.jpg)
   
-  [Noteboook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Alzheimer%20Classification.ipynb)
+  [Noteboook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Classification/Alzhemer%20Pred/Alzheimer%20Classification.ipynb)
   
   Do some test on many common Classification Alghorithm to detect alzhemier disease on some patient based on their medical history and alzheimer status, And Ada Boost Classifier Algorithm (After Hyperparameter tuning with Estimator Parameters: learning_rate=1.1866863319867205 and n_estimators=25) is completely suitable for detecting alzheimer's disease in patients with 81,4% accuracy on Precision metrics      
 
