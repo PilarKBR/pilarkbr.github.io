@@ -59,7 +59,7 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
 
 - ### Ames Housing Price Prediction
 
-  ![Theme](/assets/049818600_1605522157-Ilustrasi-Alzheimer-Sama-dengan-Demensia-shutterstock_754295458.jpg)
+  ![Theme](/assets/ameshouse.png)
 
     - #### Notebooks
       [Notebook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Regression%20%26%20Time%20Series/Ames%20House%20Pricing/SC61017_Pilar_Kukuh_Bintang_Rachmadi_Machine_Learning_Fix.ipynb)
