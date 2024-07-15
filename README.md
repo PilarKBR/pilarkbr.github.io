@@ -57,6 +57,19 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
     - #### Results
       Do some test on many common Classification Alghorithm to detect alzhemier disease on some patient based on their medical history and alzheimer status, And Ada Boost Classifier Algorithm (After Hyperparameter tuning with Estimator Parameters: learning_rate=1.1866863319867205 and n_estimators=25) is completely suitable for detecting alzheimer's disease in patients with 81,4% accuracy on Precision metrics      
 
+- ### Ames Housing Price Prediction
+
+  ![Theme](/assets/049818600_1605522157-Ilustrasi-Alzheimer-Sama-dengan-Demensia-shutterstock_754295458.jpg)
+
+    - #### Notebooks
+      [Notebook](https://github.com/PilarKBR/Projects/blob/Data-Science-Projects/Regression%20%26%20Time%20Series/Ames%20House%20Pricing/SC61017_Pilar_Kukuh_Bintang_Rachmadi_Machine_Learning_Fix.ipynb)
+      
+    - #### Results
+      Implementating some Regression Models to the dataset, after do comparation test on scatter between SalePrice and GrLivArea, XGBoost Regressor bring up the biggest accuracy between all Regression Models that used in the test within R2 Scores metrics about 0.906394
+    
+    - #### Dashboard
+      [Dashboard](https://lookerstudio.google.com/reporting/cabee44b-8721-431d-b3b0-c692ff55cc92)
+
 ## Publications
 - [Data Science on Medium](https://medium.com/@pilarkbr)
 
