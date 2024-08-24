@@ -70,6 +70,9 @@ Hi, I'm Pilar Kukuh Bintang Rachmadi, many people call me Pilar. Currently, I'm 
     - #### Dashboard
       [Dashboard](https://lookerstudio.google.com/reporting/cabee44b-8721-431d-b3b0-c692ff55cc92)
 
+- ### SQL Query Test
+  [10 Queries from theLook eCommerce Google BigQuery](/assets/SC61017_Pilar%20Kukuh%20Bintang%20Rachmadi_Foundation%20for%20Data%20Science.pdf)
+
 ## Publications
 - [Data Science on Medium](https://medium.com/@pilarkbr)
 
