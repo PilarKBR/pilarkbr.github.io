@@ -1,9 +1,16 @@
 title: Pilar Kukuh Bintang Rachmadi
-logo: /assets/IMG_6068_round.png
-#description: text below image
-# show_downloads: true
-theme: jekyll-theme-minimal
+description: Data Scientist & Computer Science Student Portfolio
+logo: /assets/images/IMG_6068_round.png
 
-remote_theme: pages-themes/minimal@v0.2.0
+# GitHub Pages will automatically use index.html over README.md
+# Disable Jekyll processing for HTML files
 plugins:
-- jekyll-remote-theme
+  - jekyll-remote-theme
+
+# Allow HTML files to be processed
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from processing
+exclude:
+  - README.md
