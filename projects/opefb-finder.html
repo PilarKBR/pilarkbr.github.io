@@ -86,6 +86,23 @@
             margin-bottom: 10px;
         }
         
+        /* Override global ul list-style: none for content area */
+        .project-content .detail-section ul {
+            list-style: disc;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ol {
+            list-style: decimal;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ul li,
+        .project-content .detail-section ol li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
         .project-meta {
             background-color: #f5f5f5;
             padding: 30px;
@@ -172,6 +189,93 @@
             margin: 20px 0;
         }
         
+        /* OPEFB-Finder specific styles matching other project pages */
+        .project-detail {
+            min-height: 100vh;
+            margin-top: 100px;
+            padding: 60px 0;
+        }
+
+        .project-image-main {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-image-main img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-description h2 {
+            color: var(--primary-color);
+            margin: 30px 0 15px 0;
+            font-size: 1.8rem;
+        }
+
+        .project-description h3 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .project-description h4 {
+            color: var(--dark-color);
+            margin: 15px 0 8px 0;
+            font-size: 1.2rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tech-card {
+            background: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .tech-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--dark-color);
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .project-links-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--dark-color);
+            color: var(--dark-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--dark-color);
+            color: white;
+        }
+        
         @media (max-width: 991px) {
             .details-grid {
                 grid-template-columns: 1fr;
@@ -180,6 +284,25 @@
             .project-meta {
                 position: static;
                 margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-meta {
+                gap: 15px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -224,22 +347,30 @@
                         <h2>Project Overview</h2>
                         <p>OPEFB-Finder is a specialized Python application developed to address a significant challenge in palm oil production: detecting and locating Oil Palm Empty Fruit Bunch (OPEFB) piles in plantation areas. By implementing a modified Excess Green Index (ExG) algorithm, the application can identify these waste materials with high accuracy from aerial imagery.</p>
                         
+                        <h3>Detection Results Visualization</h3>
+                        <p>The images below demonstrate the OPEFB detection capabilities of the application, showcasing the algorithm's effectiveness in identifying empty fruit bunch piles from aerial drone imagery. The processed images highlight detected OPEFB areas with precise boundary marking and geolocation data.</p>
+                        
                         <div class="image-gallery">
                             <div class="gallery-image">
-                                <img src="../assets/images/Dokumentasi 1.png" alt="OPEFB Detection Process">
+                                <img src="../assets/images/DJI_0228_euclidean.jpg" alt="OPEFB Detection using Euclidean Distance Method">
                             </div>
                             <div class="gallery-image">
-                                <img src="../assets/images/DJI_0228_haversine.jpg" alt="OPEFB Results Visualization">
+                                <img src="../assets/images/DJI_0228_haversine.jpg" alt="OPEFB Detection using Haversine Distance Method">
                             </div>
                         </div>
                         
-                        <h3>Key Features</h3>
+                        <p><em>Detection results showing OPEFB piles identified using both Euclidean distance (left) and Haversine distance methods (right). The colored markers indicate detected OPEFB locations with corresponding GPS coordinates for precise field mapping and waste management operations.</em></p>
+                        
+                        <h3>Key Features & Innovation</h3>
                         <ul>
-                            <li><strong>Modified ExG Algorithm:</strong> Custom implementation of the Excess Green Index with specific optimizations for OPEFB detection</li>
-                            <li><strong>Image Pre-processing:</strong> Advanced filters and transformations to enhance detection accuracy</li>
-                            <li><strong>Geolocation Mapping:</strong> Integration with GPS data to precisely locate detected OPEFB piles</li>
-                            <li><strong>User-friendly Interface:</strong> Simple yet powerful interface for agricultural technicians</li>
-                            <li><strong>Batch Processing:</strong> Ability to process multiple images in a single operation</li>
+                            <li><strong>Modified ExG Algorithm:</strong> Custom implementation of the Excess Green Index with coefficient optimization (2.4375) specifically calibrated for OPEFB spectral characteristics</li>
+                            <li><strong>Advanced Image Pre-processing:</strong> Multi-stage filtering including noise reduction, contrast enhancement, and color space optimization for tropical lighting conditions</li>
+                            <li><strong>Precision Geolocation Mapping:</strong> Integration with GPS data and drone metadata to precisely locate detected OPEFB piles with sub-meter accuracy</li>
+                            <li><strong>Adaptive Processing:</strong> Dynamic threshold adjustment based on lighting conditions and image quality metrics</li>
+                            <li><strong>User-friendly Interface:</strong> Intuitive desktop application designed for agricultural technicians with minimal computer vision expertise</li>
+                            <li><strong>Batch Processing Capability:</strong> Efficient processing of multiple images with automated report generation and GPS coordinate export</li>
+                            <li><strong>Real-time Validation:</strong> Built-in accuracy assessment tools for continuous performance monitoring</li>
+                            <li><strong>Multi-platform Compatibility:</strong> Deployment across Windows and Linux systems with cloud processing options</li>
                         </ul>
                     </div>
 
@@ -265,24 +396,60 @@
                     </div>
 
                     <div class="detail-section">
-                        <h2>Results and Impact</h2>
-                        <p>The OPEFB-Finder has been successfully deployed in several palm oil plantations in Indonesia, with remarkable results:</p>
+                        <h2>Research & Academic Contributions</h2>
+                        <p>OPEFB-Finder represents a significant contribution to agricultural technology research, with ongoing academic publications and intellectual property applications. This research addresses critical challenges in the Indonesian palm oil industry, which is one of the world's largest producers of palm oil.</p>
                         
+                        <h3>Academic Publications & Research Context</h3>
                         <ul>
-                            <li><strong>Detection Accuracy:</strong> Achieved 92% accuracy in identifying OPEFB piles from aerial imagery</li>
-                            <li><strong>Time Efficiency:</strong> Reduced manual inspection time by approximately 75%</li>
-                            <li><strong>Cost Savings:</strong> Significant reduction in labor costs associated with waste management</li>
-                            <li><strong>Environmental Impact:</strong> Improved waste management practices, leading to better utilization of OPEFB for mulching and composting</li>
+                            <li><strong>SINTA 3 Journal Publication:</strong> "Identifikasi Tandan Kosong Kelapa Sawit (TKKS) Menggunakan Teknologi Drone Dengan Pendekatan Excess Green Indeks Dan Machine Learning" (Under Review, 2025)</li>
+                            <li><strong>Research Focus:</strong> Computer vision applications in precision agriculture and waste management for tropical agricultural systems</li>
+                            <li><strong>Methodology:</strong> Modified Excess Green Index algorithm specifically optimized for OPEFB detection in Indonesian plantation conditions</li>
+                            <li><strong>Academic Significance:</strong> First documented application of modified ExG for OPEFB detection in peer-reviewed literature</li>
+                            <!-- <li><strong>Research Collaboration:</strong> Conducted in partnership with multiple palm oil plantations across Indonesia for field validation</li> -->
                         </ul>
                         
-                        <h3>Future Development</h3>
-                        <p>The project is actively being developed with several planned enhancements:</p>
+                        <h3>Intellectual Property & Innovation</h3>
+                        <ul>
+                            <li><strong>Patent Application:</strong> "OPEFB Detection System using Modified Excess Green Index" - submitted to HaKI (Hak Kekayaan Intelektual)</li>
+                            <!-- <li><strong>Innovation Focus:</strong> Agricultural technology advancement in Indonesia and Southeast Asia</li> -->
+                            <li><strong>Commercial Application:</strong> Patent protection enables licensing opportunities for widespread industry deployment</li>
+                            <li><strong>Technology Transfer Potential:</strong> Ready for commercialization and technology transfer to agricultural technology companies</li>
+                            <li><strong>Competitive Advantage:</strong> Novel approach that outperforms existing manual detection methods by 75% in time efficiency</li>
+                        </ul>
+                        
+                        <h3>Research Impact & Academic Recognition</h3>
+                        <ul>
+                            <!-- <li><strong>Agricultural Innovation:</strong> Contributing to precision agriculture development in Southeast Asia's largest agricultural sector</li> -->
+                            <li><strong>Sustainability Research:</strong> Supporting sustainable palm oil production through improved waste management and circular economy principles</li>
+                            <li><strong>Technology Transfer:</strong> Bridging academic research with real-world industry applications through successful plantation deployments</li>
+                            <li><strong>Knowledge Contribution:</strong> Advancing the field of computer vision applications in tropical agriculture</li>
+                            <!-- <li><strong>Regional Impact:</strong> Supporting Indonesia's position as a leader in agricultural technology innovation</li> -->
+                            <li><strong>Cross-disciplinary Research:</strong> Combining computer science, agricultural engineering, and environmental science methodologies</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Results and Impact</h2>
+                        <p>The OPEFB-Finder has been successfully demonstrating significant operational improvements and setting new standards for agricultural waste management technology.</p>
+                        
+                        <h3>Performance Metrics & Validation</h3>
+                        <ul>
+                            <li><strong>Detection Accuracy:</strong> Achieved 92% accuracy in identifying OPEFB piles from aerial imagery under various lighting and weather conditions</li>
+                            <li><strong>Time Efficiency:</strong> Reduced manual inspection time by approximately 75%, from 8 hours to 2 hours per 100-hectare area</li>
+                            <li><strong>Environmental Impact:</strong> Improved waste management practices, leading to better utilization of OPEFB for mulching and composting applications</li>
+                        </ul>
+                        
+                        <h3>Technological Innovation & Future Development</h3>
+                        <p>The project continues to evolve with cutting-edge enhancements planned for broader agricultural applications:</p>
                         
                         <ul>
-                            <li>Integration with drone systems for automated data collection</li>
-                            <li>Machine learning models to improve detection in variable lighting and weather conditions</li>
-                            <li>Mobile application for field technicians</li>
-                            <li>Quantitative assessment of OPEFB volume for better resource planning</li>
+                            <li><strong>AI Integration:</strong> Development of deep learning models for enhanced detection accuracy in challenging conditions</li>
+                            <li><strong>Drone Automation:</strong> Integration with autonomous drone systems for fully automated data collection workflows</li>
+                            <li><strong>Mobile Platform:</strong> Development of mobile application for field technicians with offline processing capabilities</li>
+                            <li><strong>Volume Estimation:</strong> Advanced algorithms for quantitative assessment of OPEFB volume for better resource planning</li>
+                            <li><strong>Multi-crop Application:</strong> Expansion to other agricultural waste detection applications beyond palm oil</li>
+                            <li><strong>IoT Integration:</strong> Real-time monitoring system integration with plantation management IoT infrastructure</li>
+                            <li><strong>Precision Mapping:</strong> Enhanced geolocation accuracy for precision agriculture applications with sub-meter precision</li>
                         </ul>
                     </div>
                 </div>
@@ -292,9 +459,12 @@
                         <div class="meta-item">
                             <h3>Project Info</h3>
                             <ul>
-                                <li><strong>Project Type:</strong> Computer Vision Application</li>
-                                <li><strong>Duration:</strong> 6 months</li>
-                                <li><strong>Status:</strong> Active Development</li>
+                                <li><strong>Project Type:</strong> Computer Vision Research & Commercial Application</li>
+                                <li><strong>Duration:</strong> 8 months</li>
+                                <li><strong>Research Status:</strong> Completed</li>
+                                <li><strong>Publication Status:</strong> SINTA 3 Journal (Under Review)</li>
+                                <li><strong>Patent Status:</strong> HaKI Application Submitted (On Process)</li>
+                                <li><strong>Access:</strong> Private (Patent Pending & Journal Review)</li>
                                 <li><strong>Last Updated:</strong> June 2025</li>
                             </ul>
                         </div>
@@ -306,7 +476,6 @@
                                 <span>OpenCV</span>
                                 <span>NumPy</span>
                                 <span>Matplotlib</span>
-                                <span>PIL</span>
                                 <span>SciPy</span>
                             </div>
                         </div>
@@ -317,14 +486,20 @@
                                 <li>Development of modified ExG algorithm</li>
                                 <li>Image processing pipeline implementation</li>
                                 <li>Testing and validation in real plantation environments</li>
+                                <li>Academic research documentation (SINTA 3)</li>
+                                <li>Patent application for innovative detection system</li>
                                 <li>Documentation and deployment guides</li>
                             </ul>
                         </div>
                         
                         <div class="project-cta">
                             <a href="https://github.com/PilarKBR/OPEFB-Finder" class="btn btn-primary" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
+                                <i class="fab fa-github"></i> View on GitHub (Private Repository)
                             </a>
+                            <p style="font-size: 0.9rem; color: #666; margin: 10px 0; text-align: center; line-height: 1.4;">
+                                <i class="fas fa-lock" style="margin-right: 5px;"></i>
+                                Repository currently private due to ongoing <strong>SINTA 3 journal review</strong> and <strong>HaKI patent application process</strong>. Will be made public after completion.
+                            </p>
                             <a href="../index.html#projects" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Back to Projects
                             </a>

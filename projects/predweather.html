@@ -86,6 +86,23 @@
             margin-bottom: 10px;
         }
         
+        /* Override global ul list-style: none for content area */
+        .project-content .detail-section ul {
+            list-style: disc;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ol {
+            list-style: decimal;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ul li,
+        .project-content .detail-section ol li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
         .project-meta {
             background-color: #f5f5f5;
             padding: 30px;
@@ -182,6 +199,120 @@
                 margin-bottom: 50px;
             }
         }
+        
+        .research-poster-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 50px -20px;
+            border-radius: 20px;
+            width: calc(100% + 40px);
+            position: relative;
+            left: -20px;
+        }
+        
+        .poster-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .poster-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .poster-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .poster-container {
+            text-align: center;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .poster-frame {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 100%;
+            width: auto;
+            display: inline-block;
+        }
+        
+        .poster-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .poster-frame img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .poster-caption {
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 40px;
+        }
+        
+        .poster-caption p {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .research-poster-section {
+                margin: 50px -10px;
+                padding: 40px 10px;
+                width: calc(100% + 20px);
+                left: -10px;
+            }
+            
+            .poster-header {
+                padding: 0 10px;
+            }
+            
+            .poster-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .poster-container {
+                padding: 0 10px;
+            }
+            
+            .poster-frame {
+                padding: 10px;
+                max-width: 95%;
+            }
+            
+            .poster-frame img {
+                max-width: 100%;
+            }
+            
+            .poster-caption {
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -211,7 +342,7 @@
     <header class="project-header">
         <div class="container">
             <h1>PredWeatherMarkov</h1>
-            <p>Weather prediction system using Markov chain models implemented in C++, with additional mobile interface in Dart.</p>
+            <p>Academic research project on weather prediction using Markov chain models implemented in C++, with mobile interface in Dart. Research results presented in scientific poster format.</p>
         </div>
     </header>
 
@@ -221,26 +352,30 @@
             <div class="details-grid">
                 <div class="project-content">
                     <div class="detail-section">
-                        <h2>Project Overview</h2>
-                        <p>PredWeatherMarkov is a sophisticated weather prediction application that leverages Markov chain statistical models to forecast weather patterns. Built with a multi-language architecture, the application combines the computational efficiency of C++ with the cross-platform capabilities of Flutter/Dart for mobile development.</p>
+                        <h2>Research Overview</h2>
+                        <p>PredWeatherMarkov is an academic research project focused on applying Markov chain models for weather pattern prediction in tropical regions. This study combines rigorous statistical modeling and practical implementation, resulting in a scientifically validated weather prediction system accessible through a dedicated mobile application.</p>
+                        
+                        <h3>Application Interface Visualization</h3>
+                        <p>The images below display the mobile interface of <strong>PredWeatherMarkov</strong>, which implements the Markov chain-based weather prediction model. The app is designed to provide an intuitive user experience for accessing real-time weather forecasts and insights.</p>
                         
                         <div class="image-gallery">
                             <div class="gallery-image">
-                                <img src="../assets/images/Screenshot_1747696149.png" alt="Markov Chain Visualization">
+                                <img src="../assets/images/Screenshot_1747696149.png" alt="PredWeatherMarkov Mobile App - Main Prediction Interface">
                             </div>
                             <div class="gallery-image">
-                                <img src="../assets/images/Screenshot_1747580839.png" alt="Weather Prediction Interface">
+                                <img src="../assets/images/Screenshot_1747580839.png" alt="PredWeatherMarkov Mobile App - Weather Data Visualization">
                             </div>
                         </div>
                         
-                        <h3>Key Features</h3>
+                        <p><em>The application interface presents Markov chain-based weather predictions, visualizations of weather patterns, prediction accuracy metrics, and historical data analysis tailored for the Bogor region.</em></p>
+                        
+                        <h3>Research Contributions</h3>
                         <ul>
-                            <li><strong>Markov Chain Models:</strong> Advanced statistical modeling for weather pattern prediction</li>
-                            <li><strong>Cross-Platform Mobile App:</strong> Flutter/Dart implementation for iOS and Android</li>
-                            <li><strong>High-Performance Backend:</strong> C++ core for efficient computation and data processing</li>
-                            <!-- <li><strong>Real-time Data Integration:</strong> API connections for live weather data updates</li> -->
-                            <li><strong>Offline Capability:</strong> Local data storage for predictions without internet connection</li>
-                            <li><strong>Responsive UI:</strong> Adaptive interface design for various screen sizes</li>
+                            <li><strong>Markov Chain Weather Modeling:</strong> Novel application of first-order Markov chains for local weather prediction</li>
+                            <li><strong>Academic Research Documentation:</strong> Comprehensive research methodology and results analysis</li>
+                            <li><strong>Practical Implementation:</strong> Mobile application demonstrating real-world applicability</li>
+                            <li><strong>Statistical Analysis:</strong> Performance evaluation and accuracy measurement of prediction models</li>
+                            <li><strong>Cross-Platform Development:</strong> Technical implementation using Flutter/Dart</li>
                         </ul>
                     </div>
 
@@ -253,16 +388,6 @@
                         
                         <h3>Technology Stack</h3>
                         <div class="tech-grid">
-                            <div class="tech-card">
-                                <i class="fab fa-cuttlefish"></i>
-                                <h4>C++</h4>
-                                <p>Core prediction algorithms and mathematical modeling for high-performance computation</p>
-                            </div>
-                            <div class="tech-card">
-                                <i class="fas fa-cogs"></i>
-                                <h4>CMake</h4>
-                                <p>Build automation system enabling cross-platform compilation and deployment</p>
-                            </div>
                             <div class="tech-card">
                                 <i class="fas fa-mobile-alt"></i>
                                 <h4>Dart/Flutter</h4>
@@ -286,68 +411,95 @@
                     </div>
 
                     <div class="detail-section">
-                        <h2>Results and Performance</h2>
-                        <p>The PredWeatherMarkov system has demonstrated strong performance in weather prediction accuracy:</p>
+                        <h2>Research Methodology & Results</h2>
+                        <p>The research employed rigorous statistical analysis and experimental validation to demonstrate the effectiveness of Markov chain models in weather prediction:</p>
                         
                         <ul>
-                            <li><strong>Prediction Accuracy:</strong> Achieved 78% accuracy for 24-hour weather forecasts</li>
-                            <li><strong>Processing Speed:</strong> Sub-second prediction generation for real-time applications</li>
-                            <li><strong>Cross-Platform Compatibility:</strong> Successful deployment on Android devices</li>
-                            <li><strong>Data Efficiency:</strong> Optimized algorithms reducing computational overhead by 40%</li>
-                            <li><strong>User Experience:</strong> Intuitive interface with positive user feedback scores</li>
+                            <li><strong>Prediction Capability:</strong> The application is capable of predicting weather for up to 4–5 days ahead; beyond this range, the Markov model reaches a steady state and predictions lose specificity.</li>
+                            <li><strong>Data Analysis:</strong> Comprehensive evaluation using historical weather data from BMKG (Indonesian Meteorological Agency)</li>
+                            <li><strong>Statistical Validation:</strong> Transition matrix analysis and probability distribution modeling</li>
+                            <li><strong>Academic Presentation:</strong> Research findings documented in scientific poster format</li>
+                            <li><strong>Technical Implementation:</strong> Practical demonstration through mobile application prototype</li>
                         </ul>
                         
-                        <h3>Future Enhancements</h3>
-                        <p>Planned developments for the next version include:</p>
+                        <h3>Research Impact</h3>
+                        <p>This research contributes to the field of computational meteorology by:</p>
                         
                         <ul>
-                            <li>Higher-order Markov chains for improved long-term predictions</li>
-                            <li>Machine learning integration to enhance traditional statistical models</li>
-                            <li>iOS application version for iOS Platform deployment</li>
-                            <li>Integration with IoT weather sensors for hyperlocal predictions</li>
-                            <li>Advanced visualization features including interactive weather maps</li>
+                            <li>Demonstrating practical application of Markov chains in weather prediction for tropical regions</li>
+                            <li>Providing methodology for local weather modeling using limited historical data</li>
+                            <li>Bridging theoretical statistical models with real-world mobile applications</li>
+                            <li>Contributing to understanding of weather pattern transitions in Indonesian climate</li>
+                            <li>Establishing baseline performance metrics for further research enhancement</li>
                         </ul>
+                    </div>
+
+                    <div class="detail-section research-poster-section">
+                        <div class="poster-header">
+                            <h2>Research Poster</h2>
+                            <p>
+                                The following scientific poster comprehensively documents the research findings and methodology, and was presented for the accreditation of the Mathematics Program at Pakuan University as well as the <strong>Bogor Innovation Awards 2025</strong> competition.
+                            </p>
+                        </div>
+                        
+                        <div class="poster-container">
+                            <div class="poster-frame">
+                                <img src="../assets/images/PS MATEMATIKA P1.jpg" alt="PredWeatherMarkov Research Poster - Comprehensive Markov Chain Weather Prediction Study for Bogor Region">
+                            </div>
+                        </div>
+                        
+                        <div class="poster-caption">
+                            <p>
+                                This poster was presented for the accreditation of the Mathematics Program at Pakuan University and submitted to the Bogor Innovation Awards 2025. It highlights the innovative application of Markov chains for weather prediction in Bogor, achieving 61.02% accuracy, and details the methodology, statistical analysis, and real-world impact of the research.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-sidebar">
                     <div class="project-meta">
                         <div class="meta-item">
-                            <h3>Project Info</h3>
+                            <h3>Research Info</h3>
                             <ul>
-                                <li><strong>Project Type:</strong> Weather Prediction System</li>
-                                <li><strong>Duration:</strong> 2 weeks</li>
-                                <li><strong>Status:</strong> Completed</li>
-                                <li><strong>Last Updated:</strong> June 2025</li>
+                                <li><strong>Research Type:</strong> Academic Weather Prediction Study</li>
+                                <li><strong>Duration:</strong> 4 months</li>
+                                <li><strong>Status:</strong> Completed & Presented</li>
+                                <li><strong>Competition Status:</strong> Active participant in Bogor Innovation Awards 2025</li>
+                                <li><strong>Presentation:</strong> Mathematics Program Accreditation & Bogor Innovation Awards 2025</li>
+                                <li><strong>Location:</strong> Bogor, Indonesia</li>
+                                <li><strong>Repository Access:</strong> Private (Competition in Progress)</li>
                             </ul>
                         </div>
                         
                         <div class="meta-item">
                             <h3>Technologies Used</h3>
                             <div class="tech-stack">
-                                <span>C++</span>
                                 <span>Dart</span>
                                 <span>Flutter</span>
-                                <span>CMake</span>
                                 <span>Statistical Modeling</span>
                                 <span>API Integration</span>
                             </div>
                         </div>
                         
                         <div class="meta-item">
-                            <h3>Key Contributions</h3>
+                            <h3>Research Contributions</h3>
                             <ul>
-                                <li>Markov chain algorithm implementation</li>
-                                <li>Cross-platform mobile app development</li>
-                                <li>Performance optimization and testing</li>
-                                <li>User interface design and implementation</li>
+                                <li>Markov chain algorithm research & implementation</li>
+                                <li>Statistical analysis and model validation</li>
+                                <li>Academic research documentation</li>
+                                <li>Mobile application prototype development</li>
+                                <li>Scientific poster presentation</li>
                             </ul>
                         </div>
                         
                         <div class="project-cta">
                             <a href="https://github.com/PilarKBR/PredWatherMarkov" class="btn btn-primary" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
+                                <i class="fab fa-github"></i> View on GitHub (Private Repository)
                             </a>
+                            <p style="font-size: 0.9rem; color: #666; margin: 10px 0; text-align: center; line-height: 1.4;">
+                                <i class="fas fa-lock" style="margin-right: 5px;"></i>
+                                Repository currently private due to ongoing <strong>Bogor Innovation Awards 2025</strong> competition. Will be made public after competition concludes.
+                            </p>
                             <a href="../index.html#projects" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Back to Projects
                             </a>
@@ -358,7 +510,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+       <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

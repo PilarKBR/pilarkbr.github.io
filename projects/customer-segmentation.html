@@ -26,150 +26,187 @@
         </div>
     </nav>
 
-    <!-- Project Detail Section -->
-    <section class="project-detail" style="margin-top: 100px; padding: 60px 0;">
+    <!-- Project Header -->
+    <header class="project-header">
         <div class="container">
-            <div class="project-header">
-                <h1>Customer Segmentation Using RFM Analysis and K-means with Prediction</h1>
-                <div class="project-meta">
-                    <span><i class="fas fa-calendar"></i> 2024</span>
-                    <span><i class="fas fa-tag"></i> Data Science</span>
-                    <span><i class="fas fa-building"></i> Startup Campus - Final Project</span>
+            <h1>Customer Segmentation Using RFM Analysis</h1>
+            <p>Advanced customer segmentation project using RFM Analysis and K-means clustering with ARIMA prediction. Final capstone project at Startup Campus focusing on data-driven customer insights and business strategy development.</p>
+        </div>
+    </header>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <div class="details-grid">
+                <div class="project-content">
+                    <div class="detail-section">
+                        <h2>Project Overview</h2>
+                        <p>This project represents my final capstone project at Startup Campus, focusing on developing an objective strategy to understand customers in depth and identify groups of customers who have similar needs, preferences, or buying behaviors using <strong>RFM Analysis</strong>. Customer segmentation is then performed using <strong>K-means clustering</strong>, and the predicted results of their total spending are forecasted using <strong>ARIMA</strong> time series analysis.</p>
+
+                        <h3>Project Objectives</h3>
+                        <ul>
+                            <li>Understand customer behavior patterns through comprehensive data analysis</li>
+                            <li>Implement RFM (Recency, Frequency, Monetary) analysis for customer scoring</li>
+                            <li>Apply K-means clustering algorithm for customer segmentation</li>
+                            <li>Predict future spending patterns using ARIMA time series forecasting</li>
+                            <li>Develop actionable business strategies for each customer segment</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Methodology</h2>
+                        <h3>1. RFM Analysis</h3>
+                        <p>RFM analysis evaluates customers based on three key metrics:</p>
+                        <ul>
+                            <li><strong>Recency:</strong> How recently a customer made a purchase</li>
+                            <li><strong>Frequency:</strong> How often a customer makes purchases</li>
+                            <li><strong>Monetary:</strong> How much money a customer spends</li>
+                        </ul>
+
+                        <h3>2. K-means Clustering</h3>
+                        <p>Applied K-means clustering algorithm on RFM scores to identify distinct customer segments. The optimal number of clusters was determined using the elbow method and silhouette analysis.</p>
+
+                        <h3>3. ARIMA Forecasting</h3>
+                        <p>Implemented ARIMA (AutoRegressive Integrated Moving Average) model to predict future spending patterns for each customer segment.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Key Findings & Results</h2>
+                        <h3>Cluster Analysis Results</h3>
+                        <p>The K-means algorithm identified <strong>5 distinct customer clusters</strong> with the following characteristics:</p>
+
+                        <div class="cluster-results">
+                            <div class="cluster-card">
+                                <h4>Bottom Tier (Cluster 3)</h4>
+                                <p>Loyal Prospective Users with low total transactions and lowest spending compared to other clusters. These customers show potential but need engagement strategies.</p>
+                            </div>
+
+                            <div class="cluster-card">
+                                <h4>Middle to Lower (Cluster 4)</h4>
+                                <p>Loyal Prospective Users with the lowest total transactions and spending. This segment requires careful nurturing and targeted promotions.</p>
+                            </div>
+
+                            <div class="cluster-card">
+                                <h4>Middle Tier (Cluster 0)</h4>
+                                <p>Loyal Prospective Users with medium-level transactions and expenses. This represents the core customer base with steady engagement.</p>
+                            </div>
+
+                            <div class="cluster-card">
+                                <h4>Upper Middle (Cluster 2)</h4>
+                                <p>Customers with fairly low shopping frequency, but when they make transactions, both the amount spent and total transactions are high. These are seasonal high-value customers.</p>
+                            </div>
+
+                            <div class="cluster-card">
+                                <h4>Upper Tier (Cluster 1)</h4>
+                                <p>Premium customers with low shopping frequency but the highest spending and transaction values among all groups. These are the VIP customers.</p>
+                            </div>
+                        </div>
+
+                        <h3>Business Recommendations</h3>
+                        <p>Actionable strategies developed for each customer cluster:</p>
+
+                        <div class="recommendations">
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-arrow-up"></i> Bottom Tier Strategy</h4>
+                                <p>Offer affordable promos on diverse item categories. Focus on increasing engagement through value-driven offers and educational content about product benefits.</p>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-target"></i> Middle to Lower Strategy</h4>
+                                <p>Provide personalized promos (discount vouchers, cashback) for specific categories tailored to their past purchasing history over the last year.</p>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-heart"></i> Middle Tier Strategy</h4>
+                                <p>Implement personalized item recommendations based on transaction history and provide attractive promos on frequently purchased categories.</p>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-calendar-alt"></i> Upper Middle Strategy</h4>
+                                <p>Focus on seasonal targeting with trend-based recommendations and promos for seasonal/trending categories for the next month.</p>
+                            </div>
+
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-crown"></i> Upper Tier Strategy</h4>
+                                <p>Apply premium bundle methods for multiple product categories and provide exclusive services & benefits beyond other customer groups.</p>
+                            </div>
+                        </div>
+
+                        <h3>Technical Implementation</h3>
+                        <div class="tech-stack">
+                            <div class="tech-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Pandas & NumPy</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-brain"></i>
+                                <span>Scikit-learn</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Matplotlib & Seaborn</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Statsmodels (ARIMA)</span>
+                            </div>
+                        </div>
+
+                        <h3>Results Dashboard</h3>
+                        <div class="dashboard-preview">
+                            <img src="../assets/images/Tim 10D - Dashboard HD.jpg" alt="Customer Segmentation Dashboard" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <p class="caption">Comprehensive dashboard showcasing RFM analysis results and customer segmentation visualization</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="project-content">
-                <div class="project-image-main">
-                    <img src="../assets/images/customer-segmentation-social.png" alt="Customer Segmentation">
-                </div>
-
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>This project represents my final capstone project at Startup Campus, focusing on developing an objective strategy to understand customers in depth and identify groups of customers who have similar needs, preferences, or buying behaviors using <strong>RFM Analysis</strong>. Customer segmentation is then performed using <strong>K-means clustering</strong>, and the predicted results of their total spending are forecasted using <strong>ARIMA</strong> time series analysis.</p>
-
-                    <h2>Objectives</h2>
-                    <ul>
-                        <li>Understand customer behavior patterns through comprehensive data analysis</li>
-                        <li>Implement RFM (Recency, Frequency, Monetary) analysis for customer scoring</li>
-                        <li>Apply K-means clustering algorithm for customer segmentation</li>
-                        <li>Predict future spending patterns using ARIMA time series forecasting</li>
-                        <li>Develop actionable business strategies for each customer segment</li>
-                    </ul>
-
-                    <h2>Methodology</h2>
-                    <h3>1. RFM Analysis</h3>
-                    <p>RFM analysis evaluates customers based on three key metrics:</p>
-                    <ul>
-                        <li><strong>Recency:</strong> How recently a customer made a purchase</li>
-                        <li><strong>Frequency:</strong> How often a customer makes purchases</li>
-                        <li><strong>Monetary:</strong> How much money a customer spends</li>
-                    </ul>
-
-                    <h3>2. K-means Clustering</h3>
-                    <p>Applied K-means clustering algorithm on RFM scores to identify distinct customer segments. The optimal number of clusters was determined using the elbow method and silhouette analysis.</p>
-
-                    <h3>3. ARIMA Forecasting</h3>
-                    <p>Implemented ARIMA (AutoRegressive Integrated Moving Average) model to predict future spending patterns for each customer segment.</p>
-
-                    <h2>Key Findings</h2>
-                    <h3>Cluster Analysis Results</h3>
-                    <p>The K-means algorithm identified <strong>5 distinct customer clusters</strong> with the following characteristics:</p>
-
-                    <div class="cluster-results">
-                        <div class="cluster-card">
-                            <h4>Bottom Tier (Cluster 3)</h4>
-                            <p>Loyal Prospective Users with low total transactions and lowest spending compared to other clusters. These customers show potential but need engagement strategies.</p>
+                
+                <div class="project-sidebar">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <h3>Project Info</h3>
+                            <ul>
+                                <li><strong>Project Type:</strong> Data Science Capstone</li>
+                                <li><strong>Duration:</strong> 3 months</li>
+                                <li><strong>Status:</strong> Completed</li>
+                                <li><strong>Institution:</strong> Startup Campus - Final Project</li>
+                                <li><strong>Year:</strong> 2024</li>
+                            </ul>
                         </div>
-
-                        <div class="cluster-card">
-                            <h4>Middle to Lower (Cluster 4)</h4>
-                            <p>Loyal Prospective Users with the lowest total transactions and spending. This segment requires careful nurturing and targeted promotions.</p>
+                        
+                        <div class="meta-item">
+                            <h3>Technologies Used</h3>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Pandas</span>
+                                <span>Scikit-learn</span>
+                                <span>K-means</span>
+                                <span>ARIMA</span>
+                                <span>RFM Analysis</span>
+                                <span>Data Visualization</span>
+                            </div>
                         </div>
-
-                        <div class="cluster-card">
-                            <h4>Middle Tier (Cluster 0)</h4>
-                            <p>Loyal Prospective Users with medium-level transactions and expenses. This represents the core customer base with steady engagement.</p>
+                        
+                        <div class="meta-item">
+                            <h3>Key Contributions</h3>
+                            <ul>
+                                <li>RFM analysis implementation</li>
+                                <li>K-means clustering for segmentation</li>
+                                <li>ARIMA time series forecasting</li>
+                                <li>Business strategy development</li>
+                                <li>Interactive dashboard creation</li>
+                            </ul>
                         </div>
-
-                        <div class="cluster-card">
-                            <h4>Upper Middle (Cluster 2)</h4>
-                            <p>Customers with fairly low shopping frequency, but when they make transactions, both the amount spent and total transactions are high. These are seasonal high-value customers.</p>
-                        </div>
-
-                        <div class="cluster-card">
-                            <h4>Upper Tier (Cluster 1)</h4>
-                            <p>Premium customers with low shopping frequency but the highest spending and transaction values among all groups. These are the VIP customers.</p>
-                        </div>
-                    </div>
-
-                    <h2>Business Recommendations</h2>
-                    <h3>Actionable Strategies for Each Cluster:</h3>
-
-                    <div class="recommendations">
-                        <div class="recommendation-item">
-                            <h4><i class="fas fa-arrow-up"></i> Bottom Tier Strategy</h4>
-                            <p>Offer affordable promos on diverse item categories. Focus on increasing engagement through value-driven offers and educational content about product benefits.</p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <h4><i class="fas fa-target"></i> Middle to Lower Strategy</h4>
-                            <p>Provide personalized promos (discount vouchers, cashback) for specific categories tailored to their past purchasing history over the last year.</p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <h4><i class="fas fa-heart"></i> Middle Tier Strategy</h4>
-                            <p>Implement personalized item recommendations based on transaction history and provide attractive promos on frequently purchased categories.</p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <h4><i class="fas fa-calendar-alt"></i> Upper Middle Strategy</h4>
-                            <p>Focus on seasonal targeting with trend-based recommendations and promos for seasonal/trending categories for the next month.</p>
-                        </div>
-
-                        <div class="recommendation-item">
-                            <h4><i class="fas fa-crown"></i> Upper Tier Strategy</h4>
-                            <p>Apply premium bundle methods for multiple product categories and provide exclusive services & benefits beyond other customer groups.</p>
-                        </div>
-                    </div>
-
-                    <h2>Technical Implementation</h2>
-                    <div class="tech-stack">
-                        <div class="tech-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Pandas & NumPy</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Scikit-learn</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Matplotlib & Seaborn</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Statsmodels (ARIMA)</span>
-                        </div>
-                    </div>
-
-                    <h2>Results Dashboard</h2>
-                    <div class="dashboard-preview">
-                        <img src="../assets/images/Tim 10D - Dashboard HD.jpg" alt="Customer Segmentation Dashboard" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <p class="caption">Comprehensive dashboard showcasing RFM analysis results and customer segmentation visualization</p>
-                    </div>
-
-                    <div class="project-links-section">
-                        <h2>Project Resources</h2>
-                        <div class="resource-links">
-                            <a href="https://colab.research.google.com/drive/1kC1dS0MDsBoOxX-HXtIWr1e7uJVTd_HS?usp=sharing" target="_blank" class="btn btn-primary">
+                        
+                        <div class="project-cta">
+                            <a href="https://colab.research.google.com/drive/1kC1dS0MDsBoOxX-HXtIWr1e7uJVTd_HS?usp=sharing" class="btn btn-primary" target="_blank">
                                 <i class="fab fa-google"></i> View Jupyter Notebook
                             </a>
-                            <a href="https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4" target="_blank" class="btn btn-secondary">
-                                <i class="fab fa-medium"></i> Read Medium Article (Bahasa)
+                            <a href="https://medium.com/@pilarkbr/segmentasi-pelanggan-menggunakan-rfm-dan-k-means-978f2cfa5ca4" class="btn btn-secondary" target="_blank">
+                                <i class="fab fa-medium"></i> Read Medium Article
                             </a>
                             <a href="../index.html#projects" class="btn btn-outline">
                                 <i class="fas fa-arrow-left"></i> Back to Projects
@@ -202,36 +239,177 @@
     </footer>
 
     <style>
-        .project-detail {
-            min-height: 100vh;
-        }
-
         .project-header {
+            background-image: url('../assets/images/customer-segmentation-social.png');
+            background-color: var(--primary-color);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 120px 0 80px;
             text-align: center;
-            margin-bottom: 40px;
+            position: relative;
         }
-
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            z-index: 1;
+        }
+        
+        .project-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
         .project-header h1 {
             font-size: 2.5rem;
-            color: var(--primary-color);
             margin-bottom: 20px;
         }
-
+        
+        .project-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .project-details {
+            padding: 80px 0;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+        }
+        
+        .detail-section {
+            margin-bottom: 40px;
+        }
+        
+        .detail-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .detail-section h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+        }
+        
+        .detail-section p, .detail-section ul, .detail-section ol {
+            margin-bottom: 20px;
+        }
+        
+        .detail-section ul, .detail-section ol {
+            padding-left: 20px;
+        }
+        
+        .detail-section ul li, .detail-section ol li {
+            margin-bottom: 10px;
+        }
+        
+        /* Override global ul list-style: none for content area */
+        .project-content .detail-section ul,
+        .project-description ul {
+            list-style: disc;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ol {
+            list-style: decimal;
+            padding-left: 30px;
+        }
+        
+        .project-content .detail-section ul li,
+        .project-content .detail-section ol li,
+        .project-description ul li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
         .project-meta {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            position: sticky;
+            top: 100px;
         }
-
-        .project-meta span {
-            color: var(--dark-color);
-            opacity: 0.8;
+        
+        .meta-item {
+            margin-bottom: 20px;
         }
-
-        .project-meta i {
-            margin-right: 8px;
-            color: var(--accent-color);
+        
+        .meta-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .meta-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .meta-item ul li {
+            margin-bottom: 10px;
+        }
+        
+        .meta-item .tech-stack span {
+            display: inline-block;
+            background-color: rgba(74, 111, 165, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 5px 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .project-cta {
+            margin-top: 30px;
+        }
+        
+        .project-cta a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .gallery-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Customer Segmentation specific styles */
+        .project-detail {
+            min-height: 100vh;
+            margin-top: 100px;
+            padding: 60px 0;
         }
 
         .project-image-main {
@@ -359,6 +537,17 @@
         .btn-outline:hover {
             background: var(--dark-color);
             color: white;
+        }
+
+        @media (max-width: 991px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta {
+                position: static;
+                margin-bottom: 50px;
+            }
         }
 
         @media (max-width: 768px) {
