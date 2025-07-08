@@ -168,10 +168,159 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         
         .gallery-image:hover img {
             transform: scale(1.05);
+        }
+        
+        /* Lightbox styles for image zoom functionality */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+            transform-origin: center center;
+        }
+        
+        .lightbox-image.zoomed {
+            cursor: zoom-out;
+        }
+        
+        .lightbox-image.portrait {
+            max-height: 85vh;
+            width: auto;
+        }
+        
+        .lightbox-image.landscape {
+            max-width: 85vw;
+            height: auto;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .lightbox-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .lightbox-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .lightbox-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            max-width: 80%;
+            font-size: 14px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: 20px;
+                right: 20px;
+                font-size: 25px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-controls {
+                bottom: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .lightbox-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .image-caption {
+                bottom: 70px;
+                font-size: 12px;
+                padding: 8px 15px;
+            }
         }
         
         code {
@@ -344,112 +493,83 @@
             <div class="details-grid">
                 <div class="project-content">
                     <div class="detail-section">
-                        <h2>Project Overview</h2>
-                        <p>OPEFB-Detection-System is a specialized Python application developed to address a significant challenge in palm oil production: detecting and locating Oil Palm Empty Fruit Bunch (OPEFB) piles in plantation areas. By implementing a modified Excess Green Index (ExG) algorithm, the application can identify these waste materials with high accuracy from aerial imagery.</p>
-                        
+                        <h2>Abstract & Background</h2>
+                        <p>
+                            The issue of oil palm empty fruit bunch (OPEFB) waste in plantations is a major challenge for environmental management and production efficiency. This research aims to develop an automatic OPEFB location detection system based on aerial imagery using drones, utilizing a modified Excess Green Index (ExG) algorithm. The system is expected to support monitoring, waste management, and precision agriculture practices in the palm oil sector.
+                        </p>
+                        <h3>Research Methods</h3>
+                        <p>
+                            The OPEFB detection process consists of several main stages: (1) Acquisition of aerial images using drones, (2) Image pre-processing to enhance quality and reduce noise, (3) Calculation of the ExG value modified with an optimal coefficient for OPEFB color characteristics, (4) Adaptive segmentation and thresholding to separate OPEFB areas from the background, (5) Contour detection and marking of OPEFB locations on the original image, and (6) Integration of GPS data for precise mapping.
+                        </p>
+                        <ul>
+                            <li><strong>ExG Modification:</strong> The ExG formula used: <code>ExG = 2.4375 * G - (R + B)</code> where G, R, and B are the green, red, and blue color channels.</li>
+                            <li><strong>Pre-processing:</strong> Includes normalization, noise reduction, and contrast enhancement.</li>
+                            <li><strong>Segmentation:</strong> Uses adaptive thresholding and morphological operations to clarify OPEFB areas.</li>
+                            <li><strong>Geolocation Mapping:</strong> Each OPEFB detection is linked to GPS coordinates from drone metadata.</li>
+                        </ul>
                         <h3>Detection Results Visualization</h3>
-                        <p>The images below demonstrate the OPEFB detection capabilities of the application, showcasing the algorithm's effectiveness in identifying empty fruit bunch piles from aerial drone imagery. The processed images highlight detected OPEFB areas with precise boundary marking and geolocation data.</p>
-                        
+                        <p>The following are examples of OPEFB detection results on aerial images, with detected areas visually marked and accompanied by GPS coordinate data.</p>
                         <div class="image-gallery">
                             <div class="gallery-image">
-                                <img src="../assets/images/DJI_0228_euclidean.jpg" alt="OPEFB Detection using Euclidean Distance Method">
+                                <img src="../assets/images/DJI_0228_euclidean.jpg" alt="OPEFB Detection - Euclidean">
                             </div>
                             <div class="gallery-image">
-                                <img src="../assets/images/DJI_0228_haversine.jpg" alt="OPEFB Detection using Haversine Distance Method">
+                                <img src="../assets/images/DJI_0228_haversine.jpg" alt="OPEFB Detection - Haversine">
                             </div>
                         </div>
-                        
-                        <p><em>Detection results showing OPEFB piles identified using both Euclidean distance (left) and Haversine distance methods (right). The colored markers indicate detected OPEFB locations with corresponding GPS coordinates for precise field mapping and waste management operations.</em></p>
-                        
-                        <h3>Key Features & Innovation</h3>
-                        <ul>
-                            <li><strong>Modified ExG Algorithm:</strong> Custom implementation of the Excess Green Index with coefficient optimization (2.4375) specifically calibrated for OPEFB spectral characteristics</li>
-                            <li><strong>Advanced Image Pre-processing:</strong> Multi-stage filtering including noise reduction, contrast enhancement, and color space optimization for tropical lighting conditions</li>
-                            <li><strong>Precision Geolocation Mapping:</strong> Integration with GPS data and drone metadata to precisely locate detected OPEFB piles with sub-meter accuracy</li>
-                            <li><strong>Adaptive Processing:</strong> Dynamic threshold adjustment based on lighting conditions and image quality metrics</li>
-                            <li><strong>User-friendly Interface:</strong> Intuitive desktop application designed for agricultural technicians with minimal computer vision expertise</li>
-                            <li><strong>Batch Processing Capability:</strong> Efficient processing of multiple images with automated report generation and GPS coordinate export</li>
-                            <li><strong>Real-time Validation:</strong> Built-in accuracy assessment tools for continuous performance monitoring</li>
-                            <li><strong>Multi-platform Compatibility:</strong> Deployment across Windows and Linux systems with cloud processing options</li>
-                        </ul>
+                        <p><em>OPEFB detection results using the Euclidean method (left) and Haversine method (right). Colored points indicate OPEFB locations with GPS coordinates for mapping and waste management purposes.</em></p>
                     </div>
 
                     <div class="detail-section">
-                        <h2>Technical Implementation</h2>
-                        <h3>Modified Excess Green Index (ExG)</h3>
-                        <p>The standard ExG is calculated as:</p>
-                        <pre>ExG = 2 * G - R - B</pre>
-                        <p>Where G, R, and B are the green, red, and blue channels of the image. Our modified approach includes:</p>
-                        <pre>ModifiedExG = 2.4375 * G - (R + B)</pre>
-                        <p>This modification provides better sensitivity to the specific color profile of OPEFB piles in various lighting conditions.</p>
-                        
-                        <h3>Image Processing Pipeline</h3>
-                        <ol>
-                            <li><strong>Image Acquisition:</strong> Loading and normalizing aerial images</li>
-                            <li><strong>Pre-processing:</strong> Noise reduction and contrast enhancement</li>
-                            <li><strong>ExG Calculation:</strong> Application of our modified ExG algorithm</li>
-                            <li><strong>Thresholding:</strong> Conversion to binary image using adaptive thresholding</li>
-                            <li><strong>Morphological Operations:</strong> Erosion and dilation to refine detected regions</li>
-                            <li><strong>Contour Detection:</strong> Identifying and marking OPEFB pile boundaries</li>
-                            <li><strong>Result Visualization:</strong> Highlighting detected areas on the original image</li>
-                        </ol>
+                        <h2>Results & Discussion</h2>
+                        <ul>
+                            <li><strong>Detection Accuracy:</strong> The system achieved up to 92% detection accuracy under various lighting and weather conditions.</li>
+                            <li><strong>Time Efficiency:</strong> Manual inspection time was reduced by up to 75%, from 8 hours to 2 hours per 100 hectares.</li>
+                            <li><strong>Environmental Impact:</strong> OPEFB waste management became more targeted, supporting its use for mulch and compost.</li>
+                        </ul>
+                        <p>
+                            The system has been tested in several oil palm plantations in Bogor Regency and has proven effective in automatically detecting and mapping OPEFB locations. The results of this research have also been registered as a HaKI patent and published in a community service journal.
+                        </p>
                     </div>
 
                     <div class="detail-section">
-                        <h2>Research & Academic Contributions</h2>
-                        <p>OPEFB-Detection-System represents a significant contribution to agricultural technology research, with ongoing academic publications and intellectual property applications. This research addresses critical challenges in the Indonesian palm oil industry, which is one of the world's largest producers of palm oil.</p>
-                        
-                        <h3>Academic Publications & Research Context</h3>
+                        <h2>Contributions & Impact</h2>
                         <ul>
-                            <li><strong>SINTA 3 Journal Publication:</strong> "Identifikasi Tandan Kosong Kelapa Sawit (TKKS) Menggunakan Teknologi Drone Dengan Pendekatan Excess Green Indeks Dan Machine Learning" (Under Review, 2025)</li>
-                            <li><strong>Research Focus:</strong> Computer vision applications in precision agriculture and waste management for tropical agricultural systems</li>
-                            <li><strong>Methodology:</strong> Modified Excess Green Index algorithm specifically optimized for OPEFB detection in Indonesian plantation conditions</li>
-                            <li><strong>Academic Significance:</strong> First documented application of modified ExG for OPEFB detection in peer-reviewed literature</li>
-                            <!-- <li><strong>Research Collaboration:</strong> Conducted in partnership with multiple palm oil plantations across Indonesia for field validation</li> -->
+                            <li><strong>Technological Innovation:</strong> The ExG algorithm is specifically modified for OPEFB characteristics in Indonesia.</li>
+                            <li><strong>Academic Contribution:</strong> Serves as an early reference for computer vision applications for agricultural waste detection based on aerial imagery in Indonesia.</li>
+                            <li><strong>Social Impact:</strong> Supports community service programs and capacity building for field technicians and farmers.</li>
                         </ul>
-                        
-                        <h3>Intellectual Property & Innovation</h3>
-                        <ul>
-                            <li><strong>Patent Application:</strong> "OPEFB Detection System using Modified Excess Green Index" - submitted to HaKI (Hak Kekayaan Intelektual)</li>
-                            <!-- <li><strong>Innovation Focus:</strong> Agricultural technology advancement in Indonesia and Southeast Asia</li> -->
-                            <li><strong>Commercial Application:</strong> Patent protection enables licensing opportunities for widespread industry deployment</li>
-                            <li><strong>Technology Transfer Potential:</strong> Ready for commercialization and technology transfer to agricultural technology companies</li>
-                            <li><strong>Competitive Advantage:</strong> Novel approach that outperforms existing manual detection methods by 75% in time efficiency</li>
-                        </ul>
-                        
-                        <h3>Research Impact & Academic Recognition</h3>
-                        <ul>
-                            <!-- <li><strong>Agricultural Innovation:</strong> Contributing to precision agriculture development in Southeast Asia's largest agricultural sector</li> -->
-                            <li><strong>Sustainability Research:</strong> Supporting sustainable palm oil production through improved waste management and circular economy principles</li>
-                            <li><strong>Technology Transfer:</strong> Bridging academic research with real-world industry applications through successful plantation deployments</li>
-                            <li><strong>Knowledge Contribution:</strong> Advancing the field of computer vision applications in tropical agriculture</li>
-                            <!-- <li><strong>Regional Impact:</strong> Supporting Indonesia's position as a leader in agricultural technology innovation</li> -->
-                            <li><strong>Cross-disciplinary Research:</strong> Combining computer science, agricultural engineering, and environmental science methodologies</li>
-                        </ul>
+                        <p>
+                            This research is expected to serve as a foundation for further development, including AI integration, drone automation, and mobile applications for real-time agricultural waste monitoring.
+                        </p>
                     </div>
 
                     <div class="detail-section">
-                        <h2>Results and Impact</h2>
-                        <p>The OPEFB-Detection-System has been successfully demonstrating significant operational improvements and setting new standards for agricultural waste management technology.</p>
-                        
-                        <h3>Performance Metrics & Validation</h3>
+                        <h2>HaKI Patent Documentation</h2>
+                        <p>The following documents showcase the official HaKI (Hak Kekayaan Intelektual) patent application for the OPEFB Detection System. This intellectual property documentation demonstrates the innovative nature of the modified Excess Green Index algorithm and its commercial potential in agricultural technology.</p>
+                        <div class="image-gallery">
+                            <div class="gallery-image">
+                                <img src="../assets/images/HaKI PENGOPERASIAN PROGRAM DETEKSI OTOMATIS PERKIRAAN LOKASI TANDAN KOSONG KELAPA SAWIT BERBASIS CITRA UDARA_page-0001.jpg" alt="HaKI P1">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="../assets/images/HaKI PENGOPERASIAN PROGRAM DETEKSI OTOMATIS PERKIRAAN LOKASI TANDAN KOSONG KELAPA SAWIT BERBASIS CITRA UDARA_page-0002.jpg" alt="HaKI P2">
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0;">
+                            <a href="https://hakcipta.dgip.go.id/legal/c/N2JjMDVmMjRiN2UyMWJlNmU4ZTY3Zjc3NDI4YTQ0YmI=" 
+                               class="btn btn-primary" 
+                               target="_blank" 
+                               style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease;">
+                                <i class="fas fa-certificate" style="font-size: 1.1rem;"></i>
+                                Verify HaKI Patent License
+                            </a>
+                            <p style="font-size: 0.9rem; color: #666; margin-top: 10px; font-style: italic;">
+                                Click to view official HaKI license details on DGIP database (On Behalf The Directorate General of Intellectual Property - Ministry of Law of The Republic of Indonesia)
+                            </p>
+                        </div>
                         <ul>
-                            <li><strong>Detection Accuracy:</strong> Achieved 92% accuracy in identifying OPEFB piles from aerial imagery under various lighting and weather conditions</li>
-                            <li><strong>Time Efficiency:</strong> Reduced manual inspection time by approximately 75%, from 8 hours to 2 hours per 100-hectare area</li>
-                            <li><strong>Environmental Impact:</strong> Improved waste management practices, leading to better utilization of OPEFB for mulching and composting applications</li>
-                        </ul>
-                        
-                        <h3>Technological Innovation & Future Development</h3>
-                        <p>The project continues to evolve with cutting-edge enhancements planned for broader agricultural applications:</p>
-                        
-                        <ul>
-                            <li><strong>AI Integration:</strong> Development of deep learning models for enhanced detection accuracy in challenging conditions</li>
-                            <li><strong>Drone Automation:</strong> Integration with autonomous drone systems for fully automated data collection workflows</li>
-                            <li><strong>Mobile Platform:</strong> Development of mobile application for field technicians with offline processing capabilities</li>
-                            <li><strong>Volume Estimation:</strong> Advanced algorithms for quantitative assessment of OPEFB volume for better resource planning</li>
-                            <li><strong>Multi-crop Application:</strong> Expansion to other agricultural waste detection applications beyond palm oil</li>
-                            <li><strong>IoT Integration:</strong> Real-time monitoring system integration with plantation management IoT infrastructure</li>
-                            <li><strong>Precision Mapping:</strong> Enhanced geolocation accuracy for precision agriculture applications with sub-meter precision</li>
+                            <li><strong>Journal:</strong> "Identifikasi Tandan Kosong Kelapa Sawit Menggunakan Excess Green Index dan Algoritma DBSCAN Berbasis Citra Drone" (JURIKOM, 2025)</li>
+                            <li><strong>Patent:</strong> HaKI registered under the name of the researcher and development team</li>
                         </ul>
                     </div>
                 </div>
@@ -459,13 +579,13 @@
                         <div class="meta-item">
                             <h3>Project Info</h3>
                             <ul>
-                                <li><strong>Project Type:</strong> Computer Vision Research & Commercial Application</li>
+                                <li><strong>Project Type:</strong> Computer Vision Research</li>
                                 <li><strong>Duration:</strong> 8 months</li>
                                 <li><strong>Research Status:</strong> Completed</li>
-                                <li><strong>Publication Status:</strong> SINTA 3 Journal (Under Review)</li>
-                                <li><strong>Patent Status:</strong> HaKI Application Submitted (On Process)</li>
-                                <li><strong>Access:</strong> Private (Patent Pending & Journal Review)</li>
-                                <li><strong>Last Updated:</strong> June 2025</li>
+                                <li><strong>Publication Status:</strong> JURIKOM (Jurnal Riset Komputer), accredited SINTA 3 (Under Review)</li>
+                                <li><strong>Patent Status:</strong> HaKI Licensed & Registered</li>
+                                <li><strong>Access:</strong> Private (Journal Under Review)</li>
+                                <li><strong>Last Updated:</strong> July 2025</li>
                             </ul>
                         </div>
                         
@@ -476,7 +596,7 @@
                                 <span>OpenCV</span>
                                 <span>NumPy</span>
                                 <span>Matplotlib</span>
-                                <span>SciPy</span>
+                                <span>Geopandas</span>
                             </div>
                         </div>
                         
@@ -496,6 +616,10 @@
                             <a href="https://github.com/rumahpenelitian/OPEFB-Detection-System" class="btn btn-primary" target="_blank">
                                 <i class="fab fa-github"></i> View on GitHub (Private Repository)
                             </a>
+                            <p style="font-size: 0.9rem; color: #666; margin: 10px 0; text-align: center; line-height: 1.4;">
+                                <i class="fas fa-lock" style="margin-right: 5px;"></i>
+                                Repository currently private due to ongoing <strong>SINTA 3 journal review</strong>. Will be made public after journal publication.
+                            </p>
                             <a href="../index.html#projects" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Back to Projects
                             </a>
@@ -505,6 +629,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div class="lightbox-controls">
+                <button class="lightbox-btn" id="zoom-in">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="lightbox-btn" id="zoom-out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="lightbox-btn" id="prev-image">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-btn" id="next-image">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -525,5 +671,280 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const prevBtn = document.getElementById('prev-image');
+            const nextBtn = document.getElementById('next-image');
+            
+            const galleryImages = document.querySelectorAll('.gallery-image img');
+            let currentImageIndex = 0;
+            let isZoomed = false;
+            let zoomLevel = 1;
+            let lastTouchTime = 0;
+            
+            // Make gallery images clickable
+            galleryImages.forEach((img, index) => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    currentImageIndex = index;
+                    showLightbox(this.src, this.alt);
+                });
+            });
+            
+            function showLightbox(src, alt) {
+                lightboxImage.src = src;
+                lightboxImage.alt = alt;
+                lightbox.style.display = 'flex';
+                isZoomed = false;
+                zoomLevel = 1;
+                lightboxImage.classList.remove('zoomed');
+                lightboxImage.style.transform = 'scale(1)';
+                lightboxImage.style.transformOrigin = 'center center';
+                document.body.style.overflow = 'hidden';
+                
+                // Adjust image sizing based on aspect ratio
+                lightboxImage.onload = function() {
+                    const aspectRatio = this.naturalWidth / this.naturalHeight;
+                    if (aspectRatio > 1.2) {
+                        // Landscape image
+                        this.classList.add('landscape');
+                        this.classList.remove('portrait');
+                    } else {
+                        // Portrait or square image
+                        this.classList.add('portrait');
+                        this.classList.remove('landscape');
+                    }
+                };
+            }
+            
+            function hideLightbox() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                isZoomed = false;
+                zoomLevel = 1;
+                lightboxImage.classList.remove('zoomed', 'portrait', 'landscape');
+                lightboxImage.style.transform = 'scale(1)';
+                lightboxImage.style.transformOrigin = 'center center';
+            }
+            
+            function getRelativePosition(event, element) {
+                const rect = element.getBoundingClientRect();
+                let clientX, clientY;
+                
+                if (event.touches && event.touches.length > 0) {
+                    // Touch event
+                    clientX = event.touches[0].clientX;
+                    clientY = event.touches[0].clientY;
+                } else {
+                    // Mouse event
+                    clientX = event.clientX;
+                    clientY = event.clientY;
+                }
+                
+                const x = ((clientX - rect.left) / rect.width) * 100;
+                const y = ((clientY - rect.top) / rect.height) * 100;
+                
+                return { x: Math.max(0, Math.min(100, x)), y: Math.max(0, Math.min(100, y)) };
+            }
+            
+            function zoomIn(event = null) {
+                zoomLevel = Math.min(zoomLevel * 1.5, 4);
+                
+                if (event && zoomLevel > 1) {
+                    const pos = getRelativePosition(event, lightboxImage);
+                    lightboxImage.style.transformOrigin = `${pos.x}% ${pos.y}%`;
+                }
+                
+                lightboxImage.style.transform = `scale(${zoomLevel})`;
+                isZoomed = zoomLevel > 1;
+                lightboxImage.style.cursor = isZoomed ? 'zoom-out' : 'zoom-in';
+            }
+            
+            function zoomOut(event = null) {
+                const prevZoomLevel = zoomLevel;
+                zoomLevel = Math.max(zoomLevel / 1.5, 1);
+                
+                if (zoomLevel === 1) {
+                    lightboxImage.style.transformOrigin = 'center center';
+                } else if (event && prevZoomLevel > zoomLevel) {
+                    const pos = getRelativePosition(event, lightboxImage);
+                    lightboxImage.style.transformOrigin = `${pos.x}% ${pos.y}%`;
+                }
+                
+                lightboxImage.style.transform = `scale(${zoomLevel})`;
+                isZoomed = zoomLevel > 1;
+                lightboxImage.style.cursor = isZoomed ? 'zoom-out' : 'zoom-in';
+            }
+            
+            function resetZoom() {
+                zoomLevel = 1;
+                lightboxImage.style.transform = 'scale(1)';
+                lightboxImage.style.transformOrigin = 'center center';
+                isZoomed = false;
+                lightboxImage.style.cursor = 'zoom-in';
+            }
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', hideLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    hideLightbox();
+                }
+            });
+            
+            // Zoom controls
+            zoomInBtn.addEventListener('click', () => zoomIn());
+            zoomOutBtn.addEventListener('click', () => zoomOut());
+            
+            // Double-click to zoom with position
+            lightboxImage.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+                if (isZoomed) {
+                    resetZoom();
+                } else {
+                    zoomIn(e);
+                }
+            });
+            
+            // Mouse wheel zoom with position
+            lightboxImage.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    zoomIn(e);
+                } else {
+                    zoomOut(e);
+                }
+            });
+            
+            // Click on image to toggle zoom with position
+            lightboxImage.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isZoomed) {
+                    resetZoom();
+                } else {
+                    zoomIn(e);
+                }
+            });
+            
+            // Touch events for mobile zoom
+            lightboxImage.addEventListener('touchstart', function(e) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTouchTime;
+                
+                if (tapLength < 500 && tapLength > 0) {
+                    // Double tap detected
+                    e.preventDefault();
+                    if (isZoomed) {
+                        resetZoom();
+                    } else {
+                        zoomIn(e);
+                    }
+                }
+                lastTouchTime = currentTime;
+            });
+            
+            // Pinch to zoom for mobile
+            let initialDistance = 0;
+            let initialZoom = 1;
+            
+            lightboxImage.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    initialDistance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                    initialZoom = zoomLevel;
+                }
+            });
+            
+            lightboxImage.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    const currentDistance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                    
+                    if (initialDistance > 0) {
+                        const scale = currentDistance / initialDistance;
+                        zoomLevel = Math.max(1, Math.min(4, initialZoom * scale));
+                        
+                        // Set transform origin to center of pinch
+                        const centerX = (touch1.clientX + touch2.clientX) / 2;
+                        const centerY = (touch1.clientY + touch2.clientY) / 2;
+                        const rect = lightboxImage.getBoundingClientRect();
+                        const x = ((centerX - rect.left) / rect.width) * 100;
+                        const y = ((centerY - rect.top) / rect.height) * 100;
+                        
+                        lightboxImage.style.transformOrigin = `${x}% ${y}%`;
+                        lightboxImage.style.transform = `scale(${zoomLevel})`;
+                        isZoomed = zoomLevel > 1;
+                        lightboxImage.style.cursor = isZoomed ? 'zoom-out' : 'zoom-in';
+                    }
+                }
+            });
+            
+            lightboxImage.addEventListener('touchend', function(e) {
+                if (e.touches.length < 2) {
+                    initialDistance = 0;
+                    if (zoomLevel === 1) {
+                        lightboxImage.style.transformOrigin = 'center center';
+                    }
+                }
+            });
+            
+            // Previous image
+            prevBtn.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                const prevImg = galleryImages[currentImageIndex];
+                showLightbox(prevImg.src, prevImg.alt);
+            });
+            
+            // Next image
+            nextBtn.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                const nextImg = galleryImages[currentImageIndex];
+                showLightbox(nextImg.src, nextImg.alt);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'flex') {
+                    switch(e.key) {
+                        case 'Escape':
+                            hideLightbox();
+                            break;
+                        case 'ArrowLeft':
+                            prevBtn.click();
+                            break;
+                        case 'ArrowRight':
+                            nextBtn.click();
+                            break;
+                        case '+':
+                        case '=':
+                            zoomIn();
+                            break;
+                        case '-':
+                            zoomOut();
+                            break;
+                        case '0':
+                            resetZoom();
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
