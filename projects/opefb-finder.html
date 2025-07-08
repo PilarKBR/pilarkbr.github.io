@@ -179,24 +179,23 @@
         .lightbox {
             display: none;
             position: fixed;
-            z-index: 9999;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            animation: fadeIn 0.3s ease;
+            justify-content: center;
+            align-items: center;
         }
         
         .lightbox-content {
             position: relative;
-            width: 100%;
-            height: 100%;
+            max-width: 90%;
+            max-height: 90%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
+            align-items: center;
         }
         
         .lightbox-image {
@@ -205,8 +204,6 @@
             width: auto;
             height: auto;
             object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
             cursor: zoom-in;
             transform-origin: center center;
@@ -228,17 +225,17 @@
         
         .lightbox-close {
             position: absolute;
-            top: 30px;
-            right: 40px;
+            top: -40px;
+            right: -40px;
             color: white;
-            font-size: 35px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 10000;
             background: rgba(0, 0, 0, 0.5);
+            border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -246,80 +243,92 @@
         }
         
         .lightbox-close:hover {
-            background: rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .lightbox-controls {
             position: absolute;
-            bottom: 30px;
+            bottom: -60px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 15px;
-            align-items: center;
+            gap: 10px;
         }
         
         .lightbox-btn {
             background: rgba(0, 0, 0, 0.7);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 25px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            transition: background-color 0.3s ease;
         }
         
         .lightbox-btn:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-        
-        .image-caption {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 20px;
-            max-width: 80%;
-            font-size: 14px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            background-color: var(--primary-color);
         }
         
         @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .lightbox-image.zoomed {
+                transform: scale(1.5);
+            }
+            
             .lightbox-close {
-                top: 20px;
-                right: 20px;
-                font-size: 25px;
-                width: 40px;
-                height: 40px;
+                top: -30px;
+                right: -30px;
+                width: 35px;
+                height: 35px;
+                font-size: 24px;
             }
             
             .lightbox-controls {
-                bottom: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+                bottom: -50px;
             }
             
             .lightbox-btn {
-                padding: 8px 12px;
-                font-size: 12px;
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .details-grid {
+                grid-template-columns: 1fr;
             }
             
-            .image-caption {
-                bottom: 70px;
-                font-size: 12px;
-                padding: 8px 15px;
+            .project-meta {
+                position: static;
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-meta {
+                gap: 15px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
         
@@ -424,36 +433,6 @@
             background: var(--dark-color);
             color: white;
         }
-        
-        @media (max-width: 991px) {
-            .details-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-meta {
-                position: static;
-                margin-bottom: 50px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .project-header h1 {
-                font-size: 2rem;
-            }
-
-            .project-meta {
-                gap: 15px;
-            }
-
-            .tech-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .resource-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
     </style>
 </head>
 <body>
@@ -501,11 +480,13 @@
                         <p>
                             The OPEFB detection process consists of several main stages: (1) Acquisition of aerial images using drones, (2) Image pre-processing to enhance quality and reduce noise, (3) Calculation of the ExG value modified with an optimal coefficient for OPEFB color characteristics, (4) Adaptive segmentation and thresholding to separate OPEFB areas from the background, (5) Contour detection and marking of OPEFB locations on the original image, and (6) Integration of GPS data for precise mapping.
                         </p>
+                        
+                        <h4>Key Research Components:</h4>
                         <ul>
-                            <li><strong>ExG Modification:</strong> The ExG formula used: <code>ExG = 2.4375 * G - (R + B)</code> where G, R, and B are the green, red, and blue color channels.</li>
-                            <li><strong>Pre-processing:</strong> Includes normalization, noise reduction, and contrast enhancement.</li>
-                            <li><strong>Segmentation:</strong> Uses adaptive thresholding and morphological operations to clarify OPEFB areas.</li>
-                            <li><strong>Geolocation Mapping:</strong> Each OPEFB detection is linked to GPS coordinates from drone metadata.</li>
+                            <li><strong>Data Collection:</strong> Systematic aerial imaging using drone technology across multiple plantation sites</li>
+                            <li><strong>Algorithm Development:</strong> Design and optimization of modified ExG algorithm for OPEFB detection</li>
+                            <li><strong>Validation Testing:</strong> Performance evaluation under various environmental conditions</li>
+                            <li><strong>Geospatial Integration:</strong> GPS coordinate mapping for precise OPEFB location documentation</li>
                         </ul>
                         <h3>Detection Results Visualization</h3>
                         <p>The following are examples of OPEFB detection results on aerial images, with detected areas visually marked and accompanied by GPS coordinate data.</p>
@@ -523,7 +504,7 @@
                     <div class="detail-section">
                         <h2>Results & Discussion</h2>
                         <ul>
-                            <li><strong>Detection Accuracy:</strong> The system achieved up to 92% detection accuracy under various lighting and weather conditions.</li>
+                            <li><strong>Detection Accuracy:</strong> The system achieved up to 22% detection precision and 51% recall under various lighting and weather conditions.</li>
                             <li><strong>Time Efficiency:</strong> Manual inspection time was reduced by up to 75%, from 8 hours to 2 hours per 100 hectares.</li>
                             <li><strong>Environmental Impact:</strong> OPEFB waste management became more targeted, supporting its use for mulch and compost.</li>
                         </ul>
@@ -533,15 +514,113 @@
                     </div>
 
                     <div class="detail-section">
-                        <h2>Contributions & Impact</h2>
+                        <h2>Technical Implementation</h2>
+                        <h3>Modified Excess Green Index (ExG) Algorithm</h3>
+                        <p>The core innovation lies in our modified ExG formula optimized for OPEFB detection:</p>
+                        <pre>Standard ExG = 2 * G - R - B
+Modified ExG = 2.4375 * G - (R + B)</pre>
+                        <p>Where G, R, and B are the green, red, and blue channels of the image. The coefficient 2.4375 was determined through extensive testing to provide optimal sensitivity to OPEFB color characteristics under various lighting conditions.</p>
+                        
+                        <h3>System Architecture & Processing Pipeline</h3>
+                        <ol>
+                            <li><strong>Image Acquisition Module:</strong> Drone-based capture with metadata extraction</li>
+                            <li><strong>Pre-processing Engine:</strong> Noise reduction, normalization, and contrast enhancement</li>
+                            <li><strong>ExG Calculation Core:</strong> Application of modified ExG algorithm with optimized coefficients</li>
+                            <li><strong>Adaptive Thresholding:</strong> Dynamic threshold calculation for varying lighting conditions</li>
+                            <li><strong>Morphological Operations:</strong> Erosion and dilation for region refinement</li>
+                            <li><strong>Contour Detection:</strong> Boundary identification and object classification</li>
+                            <li><strong>Geospatial Mapping:</strong> GPS integration and coordinate transformation</li>
+                            <li><strong>Visualization Output:</strong> Annotated imagery with detection overlays</li>
+                        </ol>
+                        
+                        <h3>Technology Stack & Implementation</h3>
                         <ul>
-                            <li><strong>Technological Innovation:</strong> The ExG algorithm is specifically modified for OPEFB characteristics in Indonesia.</li>
-                            <li><strong>Academic Contribution:</strong> Serves as an early reference for computer vision applications for agricultural waste detection based on aerial imagery in Indonesia.</li>
-                            <li><strong>Social Impact:</strong> Supports community service programs and capacity building for field technicians and farmers.</li>
+                            <li><strong>Programming Language:</strong> Python 3.8+ for core algorithm development</li>
+                            <li><strong>Computer Vision:</strong> OpenCV for image processing operations</li>
+                            <li><strong>Geospatial Processing:</strong> GDAL and GeoPandas for coordinate handling</li>
+                            <li><strong>Data Processing:</strong> NumPy and SciPy for numerical computations</li>
+                            <li><strong>Visualization:</strong> Matplotlib for presenting model evaluation results</li>
                         </ul>
-                        <p>
-                            This research is expected to serve as a foundation for further development, including AI integration, drone automation, and mobile applications for real-time agricultural waste monitoring.
-                        </p>
+                        
+                        <h3>GIS Integration & Output Formats</h3>
+                        <p>The system generates comprehensive geospatial outputs that can be seamlessly integrated into various GIS platforms for advanced spatial analysis and decision-making:</p>
+                        <ul>
+                            <li><strong>Shapefile (.shp):</strong> Vector polygons representing detected OPEFB areas with attribute data including detection confidence, estimated area, and timestamp</li>
+                            <li><strong>GeoJSON Format:</strong> Web-friendly geospatial data format compatible with modern GIS web applications and mobile platforms</li>
+                            <li><strong>KML/KMZ Files:</strong> Google Earth compatible formats for visualization and collaboration with stakeholders</li>
+                            <li><strong>GeoTIFF Rasters:</strong> Georeferenced detection probability maps and processed imagery layers</li>
+                            <li><strong>CSV with Coordinates:</strong> Tabular data with latitude/longitude coordinates for database integration</li>
+                        </ul>
+                        
+                        <h4>Compatible GIS Platforms:</h4>
+                        <ul>
+                            <li><strong>ArcGIS & ArcGIS Online:</strong> Full integration with Esri ecosystem for professional spatial analysis</li>
+                            <li><strong>QGIS:</strong> Open-source GIS compatibility for cost-effective implementation</li>
+                            <li><strong>Google Earth Pro:</strong> Visualization and sharing capabilities for field teams</li>
+                            <li><strong>Web GIS Applications:</strong> Integration with custom web-based plantation management systems</li>
+                            <li><strong>Mobile GIS Apps:</strong> Field data collection and real-time validation using smartphone applications</li>
+                        </ul>
+                        
+                        <h4>Spatial Analysis Capabilities:</h4>
+                        <ul>
+                            <li><strong>Volume Estimation:</strong> Integration with terrain models for waste area calculations</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Research & Academic Contributions</h2>
+                        <p>OPEFB-Detection-System represents a contribution to agricultural technology research, with ongoing academic publications and intellectual property applications. This research addresses critical challenges in the Indonesian palm oil industry, which is one of the world's largest producers of palm oil.</p>
+                        
+                        <h3>Academic Publications & Research Context</h3>
+                        <ul>
+                            <li><strong>SINTA 3 Journal Publication (On Review) :</strong> "Identifikasi Tandan Kosong Kelapa Sawit (TKKS) Menggunakan Teknologi Drone Dengan Pendekatan Excess Green Indeks Dan Machine Learning" (JURIKOM, 2025)</li>
+                            <li><strong>Research Focus:</strong> Computer vision applications in precision agriculture and waste management for tropical agricultural systems</li>
+                            <li><strong>Methodology:</strong> Modified Excess Green Index algorithm specifically optimized for OPEFB detection in Indonesian plantation conditions</li>
+                            <li><strong>Academic Significance:</strong> First documented application of modified ExG for OPEFB detection in peer-reviewed literature</li>
+                        </ul>
+                        
+                        <h3>Intellectual Property & Innovation</h3>
+                        <ul>
+                            <li><strong>Patent Registration:</strong> "Pengoperasian Program Deteksi Otomatis Perkiraan Lokasi Tandan Kosong Kelapa Sawit Berbasis Citra Udara" - successfully registered with HaKI (Hak Kekayaan Intelektual)</li>
+                            <li><strong>Commercial Application:</strong> Patent protection enables licensing opportunities for widespread industry deployment</li>
+                            <li><strong>Technology Transfer Potential:</strong> Ready for commercialization and technology transfer to agricultural technology companies</li>
+                            <li><strong>Competitive Advantage:</strong> Novel approach that outperforms existing manual detection methods by 75% in time efficiency</li>
+                        </ul>
+                        
+                        <h3>Research Impact & Academic Recognition</h3>
+                        <ul>
+                            <li><strong>Sustainability Research:</strong> Supporting sustainable palm oil production through improved waste management and circular economy principles</li>
+                            <li><strong>Technology Transfer:</strong> Bridging academic research with real-world industry applications through successful plantation deployments</li>
+                            <li><strong>Knowledge Contribution:</strong> Advancing the field of computer vision applications in tropical agriculture</li>
+                            <li><strong>Cross-disciplinary Research:</strong> Combining computer science, agricultural engineering, and environmental science methodologies</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-section">
+                        <h2>Results and Impact</h2>
+                        <p>The OPEFB-Detection-System has been successfully demonstrating significant operational improvements and setting new standards for agricultural waste management technology.</p>
+                        
+                        <h3>Performance Metrics & Validation</h3>
+                        <ul>
+                            <li><strong>Detection Accuracy:</strong> Achieved 22% precision and 51% recall in identifying OPEFB piles from aerial imagery under various lighting and weather conditions</li>
+                            <li><strong>Time Efficiency:</strong> Reduced manual inspection time by approximately 75%, from 8 hours to 2 hours per 100-hectare area</li>
+                            <li><strong>Environmental Impact:</strong> Improved waste management practices, leading to better utilization of OPEFB for mulching and composting applications</li>
+                        </ul>
+                        
+                        <h3>Technological Innovation & Future Development</h3>
+                        <p>The project continues to evolve with cutting-edge enhancements planned for broader agricultural applications:</p>
+                        
+                        <ul>
+                            <li><strong>AI Integration:</strong> Development of deep learning models for enhanced detection accuracy in challenging conditions</li>
+                            <li><strong>Drone Automation:</strong> Integration with autonomous drone systems for fully automated data collection workflows</li>
+                            <li><strong>Mobile Platform:</strong> Development of mobile application for field technicians with offline processing capabilities</li>
+                            <li><strong>Volume Estimation:</strong> Advanced algorithms for quantitative assessment of OPEFB volume for better resource planning</li>
+                            <li><strong>Advanced GIS Integration:</strong> Real-time streaming of detection results to enterprise GIS platforms with automated spatial analysis and alert systems</li>
+                            <li><strong>Multi-crop Application:</strong> Expansion to other agricultural waste detection applications beyond palm oil</li>
+                            <li><strong>IoT Integration:</strong> Real-time monitoring system integration with plantation management IoT infrastructure</li>
+                            <li><strong>Precision Mapping:</strong> Enhanced geolocation accuracy for precision agriculture applications with sub-meter precision</li>
+                            <li><strong>Cloud GIS Services:</strong> Integration with cloud-based GIS platforms for scalable multi-plantation monitoring and data analytics</li>
+                        </ul>
                     </div>
 
                     <div class="detail-section">
@@ -567,10 +646,6 @@
                                 Click to view official HaKI license details on DGIP database (On Behalf The Directorate General of Intellectual Property - Ministry of Law of The Republic of Indonesia)
                             </p>
                         </div>
-                        <ul>
-                            <li><strong>Journal:</strong> "Identifikasi Tandan Kosong Kelapa Sawit Menggunakan Excess Green Index dan Algoritma DBSCAN Berbasis Citra Drone" (JURIKOM, 2025)</li>
-                            <li><strong>Patent:</strong> HaKI registered under the name of the researcher and development team</li>
-                        </ul>
                     </div>
                 </div>
                 
