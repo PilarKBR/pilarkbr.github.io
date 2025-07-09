@@ -3,12 +3,14 @@
 .project-header {
     background-image: url('../images/20240728_125836.jpg');
     background-position: center -200px;
+    /* background-size: cover;
+    background-attachment: fixed; */
 }
 
-/* Academic research specific styling */
+/* Academic research specific styling - Fixed responsivity */
 .project-detail {
-    min-height: 100vh;
-    margin-top: 100px;
+    min-height: auto; /* Changed from 100vh to auto */
+    margin-top: 0; /* Removed fixed margin */
     padding: 60px 0;
 }
 
@@ -19,6 +21,7 @@
 
 .project-image-main img {
     max-width: 100%;
+    height: auto; /* Added explicit height auto */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
@@ -26,60 +29,59 @@
 .project-description h2 {
     color: var(--primary-color);
     margin: 30px 0 15px 0;
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem); /* Made responsive */
 }
 
 .project-description h3 {
     color: var(--secondary-color);
     margin: 20px 0 10px 0;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem); /* Made responsive */
 }
 
 .project-description h4 {
     color: var(--dark-color);
     margin: 15px 0 8px 0;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Made responsive */
 }
 
 /* HaKI Patent Documentation Section - Enhanced Visual Styling */
 .haki-patent-section {
-    padding: 60px 20px;
+    padding: clamp(40px, 5vw, 60px) clamp(15px, 3vw, 20px); /* Responsive padding */
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    margin: 50px auto;
+    margin: clamp(30px, 5vw, 50px) auto; /* Responsive margin */
     border-radius: 20px;
-    max-width: 800px;
+    max-width: min(800px, 95vw); /* Responsive max-width */
     width: 100%;
     position: relative;
-    left: 0;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .haki-patent-section .section-header {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 0 20px;
+    margin-bottom: clamp(30px, 4vw, 40px); /* Responsive margin */
+    padding: 0 clamp(10px, 2vw, 20px); /* Responsive padding */
 }
 
 .haki-patent-section .section-header h2 {
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 4vw, 2.2rem); /* Responsive font size */
     margin-bottom: 20px;
     color: var(--primary-color);
     font-weight: 700;
 }
 
 .haki-patent-section .section-header p {
-    max-width: 700px;
+    max-width: min(700px, 90vw); /* Responsive max-width */
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.2vw, 1.1rem); /* Responsive font size */
     color: #555;
     line-height: 1.6;
 }
 
 .haki-patent-section .patent-container {
     text-align: center;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: clamp(30px, 4vw, 40px) auto; /* Responsive margin */
+    padding: 0 clamp(10px, 2vw, 20px); /* Responsive padding */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,16 +90,16 @@
 
 .haki-patent-section .patent-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
-    max-width: 700px;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr)); /* Responsive grid */
+    gap: clamp(15px, 3vw, 20px); /* Responsive gap */
+    margin: clamp(20px, 4vw, 30px) 0; /* Responsive margin */
+    max-width: min(700px, 95vw); /* Responsive max-width */
     width: 100%;
 }
 
 .haki-patent-section .patent-frame {
     background: white;
-    padding: 15px;
+    padding: clamp(10px, 2vw, 15px); /* Responsive padding */
     border-radius: 15px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -121,16 +123,18 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 15px 30px;
+    padding: clamp(12px, 2.5vw, 15px) clamp(20px, 4vw, 30px); /* Responsive padding */
     background: linear-gradient(135deg, var(--primary-color) 0%, #5a7eb8 100%);
     color: white;
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem); /* Responsive font size */
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(74, 111, 165, 0.3);
-    margin-top: 30px;
+    margin-top: clamp(20px, 4vw, 30px); /* Responsive margin */
+    max-width: 90vw; /* Prevent overflow on small screens */
+    text-align: center;
 }
 
 .haki-patent-section .verification-button:hover {
@@ -141,35 +145,36 @@
 }
 
 .haki-patent-section .verification-button i {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.2vw, 1.2rem); /* Responsive icon size */
 }
 
 .haki-patent-section .verification-note {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
     color: #666;
     margin-top: 15px;
     font-style: italic;
     line-height: 1.5;
-    max-width: 500px;
+    max-width: min(500px, 90vw); /* Responsive max-width */
     margin-left: auto;
     margin-right: auto;
+    padding: 0 10px; /* Add padding to prevent edge overflow */
 }
 
 /* Detection Results Gallery Enhancement */
 .detection-results-section {
-    margin: 40px 0;
+    margin: clamp(30px, 5vw, 40px) 0; /* Responsive margin */
 }
 
 .detection-results-section .results-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr)); /* Responsive grid */
+    gap: clamp(15px, 3vw, 20px); /* Responsive gap */
+    margin: clamp(20px, 4vw, 30px) 0; /* Responsive margin */
 }
 
 .detection-results-section .result-frame {
     background: white;
-    padding: 10px;
+    padding: clamp(8px, 1.5vw, 10px); /* Responsive padding */
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -193,22 +198,22 @@
     font-style: italic;
     color: #666;
     margin-top: 20px;
-    padding: 0 20px;
-    font-size: 0.95rem;
+    padding: 0 clamp(15px, 3vw, 20px); /* Responsive padding */
+    font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
     line-height: 1.5;
 }
 
 /* Technology stack display for research projects */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 90vw), 1fr)); /* Responsive grid */
+    gap: clamp(15px, 3vw, 20px); /* Responsive gap */
+    margin: clamp(20px, 4vw, 30px) 0; /* Responsive margin */
 }
 
 .tech-card {
     background: white;
-    padding: 20px;
+    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-left: 4px solid var(--primary-color);
@@ -222,7 +227,12 @@
 .tech-card h4 {
     color: var(--primary-color);
     margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+}
+
+.tech-card p {
+    font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
+    line-height: 1.4;
 }
 
 /* Project links section */
@@ -252,73 +262,191 @@
     transform: translateY(-2px);
 }
 
+/* Additional responsive utility classes for OPEFB Finder */
+.responsive-container {
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.responsive-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Ensure images are always responsive */
+.project-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent code blocks from causing horizontal scroll */
+.project-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Ensure tables are responsive if any */
+.project-content table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .project-content table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Fix any list overflow issues */
+.project-content ul, .project-content ol {
+    padding-left: clamp(20px, 4vw, 40px);
+}
+
+.project-content li {
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Ensure project sidebar is responsive */
+@media (max-width: 1024px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
 /* Mobile responsive styling */
 @media (max-width: 768px) {
+    .project-header {
+        background-attachment: scroll; /* Fix mobile background attachment */
+        background-position: center center; /* Better mobile positioning */
+    }
+    
     .haki-patent-section {
-        margin: 50px auto;
-        padding: 40px 15px;
-        max-width: 95%;
-        left: 0;
+        margin: 30px 10px; /* Adjusted margin for mobile */
+        padding: 30px 15px; /* Adjusted padding for mobile */
+        max-width: calc(100vw - 20px); /* Prevent horizontal overflow */
     }
     
     .haki-patent-section .section-header {
-        padding: 0 10px;
+        padding: 0 5px;
     }
     
     .haki-patent-section .section-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        line-height: 1.2;
     }
     
     .haki-patent-section .patent-container {
-        padding: 0 10px;
+        padding: 0 5px;
     }
     
     .haki-patent-section .patent-gallery {
         grid-template-columns: 1fr;
         max-width: 100%;
+        gap: 15px;
     }
     
     .haki-patent-section .patent-frame {
         padding: 10px;
+        margin: 0 auto;
+        max-width: 100%;
     }
     
     .haki-patent-section .verification-button {
-        padding: 12px 24px;
-        font-size: 1rem;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        width: auto;
+        max-width: calc(100vw - 40px);
+        word-wrap: break-word;
     }
     
     .haki-patent-section .verification-note {
-        padding: 0 15px;
-        font-size: 0.9rem;
+        padding: 0 10px;
+        font-size: 0.85rem;
     }
     
     .detection-results-section .results-gallery {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
     
     .tech-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
     
     .resource-links {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .caption {
-        padding: 0 15px;
-        font-size: 0.9rem;
+        padding: 0 10px;
+        font-size: 0.85rem;
+    }
+    
+    /* Fix any potential overflow issues */
+    .project-content {
+        overflow-x: hidden;
+    }
+    
+    .project-content img {
+        max-width: 100%;
+        height: auto;
     }
 }
 
 /* Extra small mobile responsive */
 @media (max-width: 480px) {
+    .haki-patent-section {
+        margin: 20px 5px;
+        padding: 25px 10px;
+        border-radius: 15px;
+    }
+    
     .haki-patent-section .verification-button {
-        padding: 10px 20px;
-        font-size: 0.95rem;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+        margin-top: 20px;
     }
     
     .haki-patent-section .section-header h2 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+    }
+    
+    .haki-patent-section .section-header p {
+        font-size: 0.9rem;
+    }
+    
+    .project-description h2 {
+        font-size: 1.3rem;
+    }
+    
+    .project-description h3 {
+        font-size: 1.1rem;
+    }
+    
+    .project-description h4 {
+        font-size: 1rem;
+    }
+    
+    /* Ensure no horizontal scroll */
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
