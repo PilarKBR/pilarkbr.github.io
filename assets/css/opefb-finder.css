@@ -98,6 +98,8 @@
     margin: 30px 0;
     max-width: 700px;
     width: 100%;
+    align-items: center;
+    justify-items: center;
 }
 
 .haki-patent-section .patent-frame {
@@ -107,6 +109,12 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .haki-patent-section .patent-frame:hover {
@@ -120,6 +128,7 @@
     border-radius: 10px;
     display: block;
     margin: 0 auto;
+    object-fit: contain;
 }
 
 .haki-patent-section .verification-button {
@@ -189,6 +198,25 @@
     margin: 10px 0 30px;
     padding: 0 20px;
     line-height: 1.5;
+}
+
+/* Responsive caption text */
+.caption-mobile {
+    display: none;
+}
+
+.caption-desktop {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .caption-mobile {
+        display: inline;
+    }
+    
+    .caption-desktop {
+        display: none;
+    }
 }
 
 /* Technology stack display for research projects */
@@ -287,6 +315,7 @@
     
     .haki-patent-section .patent-frame {
         padding: 10px;
+        max-width: 100%;
     }
     
     .results-gallery {
@@ -313,7 +342,7 @@
     }
     
     .project-header {
-        background-position: center;
+        background-position: center -200px;
     }
     
     .verification-button {
