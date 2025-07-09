@@ -46,6 +46,24 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 50px;
+    /* align-items: start; */
+}
+
+/* Ensure grid items behave correctly */
+.project-content {
+    min-width: 0; /* Prevents overflow in grid items */
+    overflow: hidden; /* Prevents content from breaking out of grid */
+}
+
+
+/* Ensure special sections don't break grid layout */
+.research-poster-section,
+.dashboard-preview,
+.haki-patent-section {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .detail-section {
@@ -445,11 +463,10 @@ pre {
 .research-poster-section {
     padding: 60px 20px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    margin: 50px -20px;
+    margin: 50px 0;
     border-radius: 20px;
-    width: calc(100% + 40px);
+    max-width: 100%;
     position: relative;
-    left: -20px;
 }
 
 .poster-header {
@@ -552,25 +569,54 @@ pre {
 @media (max-width: 991px) {
     .details-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .project-meta {
         position: static;
         margin-bottom: 50px;
     }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .recommendations {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
+    .project-header {
+        padding: 100px 0 60px;
+    }
+    
     .project-header h1 {
         font-size: 2rem;
+    }
+    
+    .project-header p {
+        font-size: 1rem;
+    }
+
+    .project-details {
+        padding: 50px 0;
     }
 
     .project-meta {
         gap: 15px;
     }
 
-    .cluster-results {
+    .cluster-results,
+    .recommendations {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .resource-links {
@@ -578,39 +624,131 @@ pre {
         align-items: center;
     }
     
-    .research-poster-section {
-        margin: 50px -10px;
-        padding: 40px 10px;
-        width: calc(100% + 20px);
-        left: -10px;
+    .research-poster-section,
+    .dashboard-preview,
+    .haki-patent-section {
+        margin: 40px 0;
+        padding: 30px 20px;
+        width: 100%;
     }
     
-    .poster-header {
+    .poster-header,
+    .section-header {
         padding: 0 10px;
     }
     
-    .poster-header h2 {
+    .poster-header h2,
+    .section-header h2 {
         font-size: 1.8rem;
     }
     
-    .poster-container {
+    .poster-container,
+    .patent-container {
         padding: 0 10px;
     }
     
-    .poster-frame {
+    .poster-frame,
+    .patent-frame {
         padding: 10px;
         max-width: 95%;
     }
     
-    .poster-frame img {
+    .poster-frame img,
+    .patent-frame img {
         max-width: 100%;
     }
     
     .poster-caption {
-        padding: 0 20px;
+        padding: 0 15px;
     }
     
     .tech-grid {
         grid-template-columns: 1fr;
+    }
+
+    .detail-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .detail-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .detail-section h4 {
+        font-size: 1.1rem;
+    }
+    
+    .detail-section p, 
+    .detail-section ul, 
+    .detail-section ol {
+        font-size: 0.95rem;
+    }
+
+    .project-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .project-cta a {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-header {
+        padding: 80px 0 40px;
+    }
+    
+    .project-header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .project-header p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+    
+    .detail-section {
+        margin-bottom: 30px;
+    }
+    
+    .tech-stack {
+        flex-wrap: wrap;
+    }
+    
+    .tech-stack span {
+        margin-bottom: 8px;
+    }
+    
+    .tech-item {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-grid {
+        gap: 15px;
+    }
+    
+    .cluster-card, 
+    .recommendation-item {
+        padding: 15px;
+    }
+    
+    .meta-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .meta-item ul li,
+    .meta-item .tech-stack span {
+        font-size: 0.85rem;
+    }
+
+    .project-meta {
+        padding: 20px;
     }
 }

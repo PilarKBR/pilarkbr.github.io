@@ -32,6 +32,8 @@ pre {
     position: relative;
     left: 0;
     text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .poster-header {
@@ -139,39 +141,69 @@ pre {
 
 /* Mobile responsive styling for research poster */
 @media (max-width: 768px) {
-    .research-poster-section {
-        margin: 50px auto;
-        padding: 40px 15px;
-        max-width: 95%;
-        left: 0;
+    .project-header {
+        background-position: center;
     }
     
-    .poster-header {
-        padding: 0 10px;
+    .research-poster-section {
+        padding: 40px 15px;
+        margin: 30px auto;
     }
     
     .poster-header h2 {
         font-size: 1.8rem;
     }
     
-    .poster-container {
-        padding: 0 10px;
+    .poster-header p {
+        font-size: 1rem;
     }
     
-    .poster-frame {
-        padding: 10px;
-        max-width: 95%;
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
     
-    .poster-frame img {
-        max-width: 100%;
-    }
-    
-    .poster-caption {
-        padding: 0 15px;
+    .gallery-image {
+        margin-bottom: 15px;
     }
     
     .tech-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .tech-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .research-poster-section {
+        padding: 30px 10px;
+    }
+    
+    .poster-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .poster-header p {
+        font-size: 0.9rem;
+    }
+    
+    .poster-frame {
+        padding: 8px;
+    }
+    
+    .poster-caption p {
+        font-size: 0.85rem;
+    }
+    
+    .tech-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    pre {
+        padding: 10px;
+        font-size: 0.8rem;
     }
 }

@@ -80,8 +80,10 @@
                         <h2>Technical Implementation</h2>
                         <h3>Modified Excess Green Index (ExG) Algorithm</h3>
                         <p>The core innovation lies in our modified ExG formula optimized for OPEFB detection:</p>
-                        <pre>Standard ExG = 2 * G - R - B
-Modified ExG = 2.4375 * G - (R + B)</pre>
+                        <div class="code-block">
+                            <code>Standard ExG = 2 * G - R - B</code>
+                            <code>Modified ExG = 2.4375 * G - (R + B)</code>
+                        </div>
                         <p>Where G, R, and B are the green, red, and blue channels of the image. The coefficient 2.4375 was determined through extensive testing to provide optimal sensitivity to OPEFB color characteristics under various lighting conditions.</p>
                         
                         <h3>System Architecture & Processing Pipeline</h3>
@@ -263,7 +265,7 @@ Modified ExG = 2.4375 * G - (R + B)</pre>
                         
                         <div class="project-cta">
                             <a href="https://github.com/rumahpenelitian/OPEFB-Detection-System" class="btn btn-primary" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub (Private Repository)
+                                <i class="fab fa-github"></i> View on GitHub
                             </a>
                             <p style="font-size: 0.9rem; color: #666; margin: 10px 0; text-align: center; line-height: 1.4;">
                                 <i class="fas fa-lock" style="margin-right: 5px;"></i>
