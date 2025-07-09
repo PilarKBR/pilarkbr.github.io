@@ -2,20 +2,60 @@
 <div id="lightbox" class="lightbox">
     <div class="lightbox-content">
         <span class="lightbox-close">&times;</span>
+        <div class="lightbox-loading">
+            <div class="loading-spinner"></div>
+        </div>
         <img id="lightbox-image" class="lightbox-image" src="" alt="">
         <div class="lightbox-controls">
-            <button class="lightbox-btn" id="zoom-in">
+            <button class="lightbox-btn" id="zoom-in" title="Zoom In">
                 <i class="fas fa-search-plus"></i>
             </button>
-            <button class="lightbox-btn" id="zoom-out">
+            <button class="lightbox-btn" id="zoom-out" title="Zoom Out">
                 <i class="fas fa-search-minus"></i>
             </button>
-            <button class="lightbox-btn" id="prev-image">
+            <button class="lightbox-btn" id="prev-image" title="Previous Image">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="lightbox-btn" id="next-image">
+            <button class="lightbox-btn" id="next-image" title="Next Image">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
+        <div class="lightbox-info">
+            <span id="image-counter"></span>
+        </div>
+        <div class="lightbox-help" id="lightbox-help">
+            <div class="help-content">
+                <h3>Navigation Help</h3>
+                <div class="help-items">
+                    <div class="help-item">
+                        <span class="help-key">←/→</span>
+                        <span class="help-desc">Previous/Next image</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-key">+/-</span>
+                        <span class="help-desc">Zoom in/out</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-key">ESC</span>
+                        <span class="help-desc">Close lightbox</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-key">0</span>
+                        <span class="help-desc">Reset zoom</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-key">Click/Double-tap</span>
+                        <span class="help-desc">Zoom toggle</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-key">Swipe</span>
+                        <span class="help-desc">Navigate images</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="lightbox-help-btn" id="help-btn" title="Show Help">
+            <i class="fas fa-question"></i>
+        </button>
     </div>
 </div>

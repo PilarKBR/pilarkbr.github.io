@@ -1,20 +1,35 @@
 // Project Page Shared JavaScript - Lightbox functionality
 
-document.addEventListener('DOMContentLoaded', function() {
+function initializeLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxLoading = document.querySelector('.lightbox-loading');
+    const imageCounter = document.getElementById('image-counter');
     const zoomInBtn = document.getElementById('zoom-in');
     const zoomOutBtn = document.getElementById('zoom-out');
     const prevBtn = document.getElementById('prev-image');
     const nextBtn = document.getElementById('next-image');
+    const lightboxControls = document.querySelector('.lightbox-controls');
+    const helpBtn = document.getElementById('help-btn');
+    const lightboxHelp = document.getElementById('lightbox-help');
     
-    // Select gallery images - includes both .gallery-image img and .dashboard-preview img for flexibility
-    const galleryImages = document.querySelectorAll('.gallery-image img, .dashboard-preview img, .poster-frame img');
+    // Check if lightbox elements exist
+    if (!lightbox || !lightboxImage) {
+        // If lightbox elements don't exist yet, wait and try again
+        setTimeout(initializeLightbox, 100);
+        return;
+    }
+    
+    // Select gallery images - includes all clickable images across project pages
+    const galleryImages = document.querySelectorAll('.gallery-image img, .dashboard-preview img, .poster-frame img, .poster-image img');
     let currentImageIndex = 0;
     let isZoomed = false;
     let zoomLevel = 1;
     let lastTouchTime = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isSwiping = false;
     
     // Make gallery images clickable
     galleryImages.forEach((img, index) => {
@@ -26,18 +41,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function showLightbox(src, alt) {
-        lightboxImage.src = src;
-        lightboxImage.alt = alt;
+        // Show loading indicator
+        lightboxLoading.style.display = 'block';
+        lightboxImage.style.display = 'none';
+        
         lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Update image counter
+        updateImageCounter();
+        
+        // Reset zoom state
         isZoomed = false;
         zoomLevel = 1;
         lightboxImage.classList.remove('zoomed');
         lightboxImage.style.transform = 'scale(1)';
         lightboxImage.style.transformOrigin = 'center center';
-        document.body.style.overflow = 'hidden';
         
-        // Adjust image sizing based on aspect ratio
+        // Load new image
+        lightboxImage.src = src;
+        lightboxImage.alt = alt;
+        
+        // Hide loading and show image when loaded
         lightboxImage.onload = function() {
+            lightboxLoading.style.display = 'none';
+            lightboxImage.style.display = 'block';
+            
             const aspectRatio = this.naturalWidth / this.naturalHeight;
             if (aspectRatio > 1.2) {
                 // Landscape image
@@ -49,10 +78,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.remove('landscape');
             }
         };
+        
+        // Handle loading error
+        lightboxImage.onerror = function() {
+            lightboxLoading.style.display = 'none';
+            lightboxImage.style.display = 'block';
+            lightboxImage.alt = 'Image failed to load';
+        };
+    }
+    
+    function updateImageCounter() {
+        if (galleryImages.length > 1) {
+            imageCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            imageCounter.style.display = 'block';
+            lightboxControls.classList.remove('single-image');
+        } else {
+            imageCounter.style.display = 'none';
+            lightboxControls.classList.add('single-image');
+        }
     }
     
     function hideLightbox() {
         lightbox.style.display = 'none';
+        lightboxLoading.style.display = 'none';
+        lightboxHelp.style.display = 'none';
         document.body.style.overflow = 'auto';
         isZoomed = false;
         zoomLevel = 1;
@@ -130,6 +179,23 @@ document.addEventListener('DOMContentLoaded', function() {
     zoomInBtn.addEventListener('click', () => zoomIn());
     zoomOutBtn.addEventListener('click', () => zoomOut());
     
+    // Help toggle
+    helpBtn.addEventListener('click', function() {
+        const isVisible = lightboxHelp.style.display === 'block';
+        lightboxHelp.style.display = isVisible ? 'none' : 'block';
+    });
+    
+    // Close lightbox
+    lightboxClose.addEventListener('click', hideLightbox);
+    
+    // Hide help when clicking on lightbox content
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightboxHelp.style.display = 'none';
+            hideLightbox();
+        }
+    });
+    
     // Double-click to zoom with position
     lightboxImage.addEventListener('dblclick', function(e) {
         e.preventDefault();
@@ -160,21 +226,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Touch events for mobile zoom
+    // Touch events for mobile zoom and swipe
     lightboxImage.addEventListener('touchstart', function(e) {
         const currentTime = new Date().getTime();
         const tapLength = currentTime - lastTouchTime;
         
-        if (tapLength < 500 && tapLength > 0) {
-            // Double tap detected
-            e.preventDefault();
-            if (isZoomed) {
-                resetZoom();
-            } else {
-                zoomIn(e);
+        if (e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            isSwiping = false;
+            
+            if (tapLength < 500 && tapLength > 0) {
+                // Double tap detected
+                e.preventDefault();
+                if (isZoomed) {
+                    resetZoom();
+                } else {
+                    zoomIn(e);
+                }
             }
         }
         lastTouchTime = currentTime;
+    });
+    
+    lightboxImage.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1 && !isZoomed) {
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            const deltaX = touchX - touchStartX;
+            const deltaY = touchY - touchStartY;
+            
+            // Check if horizontal swipe is dominant
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                isSwiping = true;
+                e.preventDefault();
+            }
+        }
+    });
+    
+    lightboxImage.addEventListener('touchend', function(e) {
+        if (isSwiping && galleryImages.length > 1) {
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaX = touchEndX - touchStartX;
+            
+            if (deltaX > 50) {
+                // Swipe right - previous image
+                prevBtn.click();
+            } else if (deltaX < -50) {
+                // Swipe left - next image
+                nextBtn.click();
+            }
+        }
+        isSwiping = false;
     });
     
     // Pinch to zoom for mobile
@@ -255,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (lightbox.style.display === 'flex') {
             switch(e.key) {
                 case 'Escape':
+                    lightboxHelp.style.display = 'none';
                     hideLightbox();
                     break;
                 case 'ArrowLeft':
@@ -277,7 +381,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 case '0':
                     resetZoom();
                     break;
+                case 'h':
+                case 'H':
+                case '?':
+                    helpBtn.click();
+                    break;
             }
         }
     });
+}
+
+// Initialize lightbox when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait a bit for includes to load, then initialize
+    setTimeout(initializeLightbox, 100);
 });
