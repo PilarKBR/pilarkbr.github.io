@@ -3,8 +3,8 @@
 .project-header {
     background-image: url('../images/20240728_125836.jpg');
     background-position: center -200px;
-    background-size: cover;
-    background-attachment: fixed;
+    /* background-size: cover;
+    background-attachment: fixed; */
 }
 
 /* Academic research specific styling */
