@@ -15,33 +15,13 @@ title: "Pilar Kukuh Bintang Rachmadi - Portfolio"
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#">Pilar Kukuh <span>Bintang Rachmadi</span></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="resume.pdf" class="btn-resume" target="_blank">Resume</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <div data-include="includes/header-index.html"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Hello, I'm <span>Pilar Kukuh Bintang Rachmadi</span></h1>
+                <h1>Hello, I'm <span>Pilar</span></h1>
                 <h2>Data Scientist & Computer Science Student</h2>
                 <p>Final semester Computer Science student at Pakuan University. Ex-Data Science & AI Mentee MSIB Batch 6 at Startup Campus. Specializing in Python, data analysis, machine learning, and data visualization.</p>
                 <div class="hero-buttons">
@@ -73,27 +53,32 @@ title: "Pilar Kukuh Bintang Rachmadi - Portfolio"
                     <p>My experience spans across customer segmentation analysis, predictive modeling, computer vision applications, and creating interactive dashboards using tools like Power BI, Tableau, and Looker Studio.</p>
                     <div class="about-details">
                         <div class="detail">
-                            <h4>Name:</h4>
+                            <h4><i class="fas fa-user"></i> Name:</h4>
                             <p>Pilar Kukuh Bintang Rachmadi</p>
                         </div>
                         <div class="detail">
-                            <h4>Email:</h4>
-                            <p>pilar.kukuh@gmail.com</p>
-                            <p>pilar.065121128@unpak.ac.id</p>
+                            <h4><i class="fas fa-envelope"></i> Contact Email:</h4>
+                            <p><strong>Primary:</strong> <a href="mailto:pilar.kukuh@gmail.com">pilar.kukuh@gmail.com</a></p>
+                            <p><strong>Academic:</strong> <a href="mailto:pilar.065121128@unpak.ac.id">pilar.065121128@unpak.ac.id</a></p>
                         </div>
                         <div class="detail">
-                            <h4>Location:</h4>
-                            <p>Bogor, Indonesia</p>
-                            <p>Sukabumi, Indonesia</p>
+                            <h4><i class="fas fa-map-marker-alt"></i> Location:</h4>
+                            <p><strong>University:</strong> Bogor, Indonesia</p>
+                            <p><strong>Residence:</strong> Sukabumi, Indonesia</p>
                         </div>
                         <div class="detail">
-                            <h4>Education:</h4>
+                            <h4><i class="fas fa-graduation-cap"></i> Education:</h4>
                             <p>Computer Science Student at Pakuan University</p>
+                            <p><em>Final Semester (Expected Graduation: 2025)</em></p>
                         </div>
                         <div class="detail">
-                            <h4>Experience:</h4>
-                            <p>AI & Machine Learning Mentor on Lokpro Camp Batch 1 (Jun 2024)</p>
-                            <p>Data Science & AI Mentee at Startup Campus (MSIB Batch 6) (Feb - Jun 2024)</p>
+                            <h4><i class="fas fa-briefcase"></i> Experience:</h4>
+                            <p><strong>AI & ML Mentor</strong> - Lokpro Camp Batch 1 (Jun 2024)</p>
+                            <p><strong>Data Science & AI Mentee</strong> - Startup Campus MSIB Batch 6 (Feb - Jun 2024)</p>
+                        </div>
+                        <div class="detail">
+                            <h4><i class="fas fa-code"></i> Specialization:</h4>
+                            <p>Data Analysis, Data Science, Machine Learning, Deep Learning, Computer Vision, Statistical Analysis, and Data Visualization</p>
                         </div>
                     </div>
                 </div>
@@ -172,8 +157,6 @@ title: "Pilar Kukuh Bintang Rachmadi - Portfolio"
                         <span>Data Analysis</span>
                         <span>Data Visualization</span>
                         <span>Business Intelligence</span>
-                        <span>Tableau</span>
-                        <span>Power BI</span>
                         <span>Google BigQuery</span>
                         <span>Jupyter Notebook</span>
                         <span>Flutter</span>
@@ -592,25 +575,9 @@ title: "Pilar Kukuh Bintang Rachmadi - Portfolio"
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#">Pilar Kukuh <span>Bintang Rachmadi</span></a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/PilarKBR" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/pilarkbr" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://medium.com/@pilarkbr" target="_blank"><i class="fab fa-medium"></i></a>
-                    <a href="https://www.instagram.com/pilarkbr28/" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Pilar Kukuh Bintang Rachmadi. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div data-include="includes/footer-index.html"></div>
 
+    <script src="assets/js/includes.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

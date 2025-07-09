@@ -380,6 +380,15 @@ section {
     font-size: clamp(0.9rem, 2vw, 1rem);
     word-wrap: break-word;
     overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail h4 i {
+    font-size: 1.1em;
+    color: var(--accent-color);
+    min-width: 16px;
 }
 
 .detail p {
@@ -388,7 +397,28 @@ section {
     line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    hyphens: auto;
+}
+
+.detail p strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.detail p em {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.detail p a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.detail p a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 /* Skills Section */
