@@ -19,7 +19,7 @@
     <header class="project-header">
         <div class="container">
             <h1>OPEFB-Detection-System</h1>
-            <p>Python application for detecting the presence of oil palm empty fruit bunch piles using a modified Excess Green Index (ExG) method.</p>
+            <p>Automated spatial detection system for Oil Palm Empty Fruit Bunch (OPEFB) waste using modified Excess Green Index and DBSCAN clustering algorithm based on drone RGB imagery.</p>
         </div>
     </header>
 
@@ -31,20 +31,42 @@
                     <div class="detail-section">
                         <h2>Abstract & Background</h2>
                         <p>
-                            The issue of oil palm empty fruit bunch (OPEFB) waste in plantations is a major challenge for environmental management and production efficiency. This research aims to develop an automatic OPEFB location detection system based on aerial imagery using drones, utilizing a modified Excess Green Index (ExG) algorithm. The system is expected to support monitoring, waste management, and precision agriculture practices in the palm oil sector.
+                            The management of Oil Palm Empty Fruit Bunch (OPEFB) waste remains a significant challenge in oil palm plantations, particularly in Desa Wirajaya, Jasinga District, Bogor Regency, due to limited access and reliance on manual record-keeping systems. This research developed an automated system to accurately detect and map OPEFB pile locations based on drone RGB aerial imagery and spatial analysis. The system employs a modified Excess Green Index (ExG) algorithm combined with DBSCAN clustering to identify OPEFB locations across plantation areas.
                         </p>
-                        <h3>Research Methods</h3>
+                        <h3>Research Location & Context</h3>
                         <p>
-                            The OPEFB detection process consists of several main stages: (1) Acquisition of aerial images using drones, (2) Image pre-processing to enhance quality and reduce noise, (3) Calculation of the ExG value modified with an optimal coefficient for OPEFB color characteristics, (4) Adaptive segmentation and thresholding to separate OPEFB areas from the background, (5) Contour detection and marking of OPEFB locations on the original image, and (6) Integration of GPS data for precise mapping.
+                            Field research was conducted at oil palm plantations in Desa Wirajaya, Kecamatan Jasinga, Kabupaten Bogor, covering areas with significant OPEFB accumulation. The plantation faces challenges in systematic waste management due to terrain accessibility and lack of efficient monitoring systems. This research addresses these challenges through technology-driven spatial detection methodology.
+                        </p>
+                        <h3>Research Methodology</h3>
+                        <p>
+                            The detection system development followed a structured flowchart encompassing: (1) <strong>Aerial Image Acquisition</strong> using DJI Phantom 4 Pro V2.0 drone with vertical (nadir) positioning at 1/800 shutter speed and ISO 400 settings, (2) <strong>Image Preprocessing</strong> including HSV color space conversion and V-channel normalization using cv2.cvtColor() and Pallet (V) functions, (3) <strong>Color Segmentation</strong> via modified Excess Green Index (ExG = 2.4375 × G - (R + B)), (4) <strong>Image Extraction</strong> through filtering and binary conversion, (5) <strong>DBSCAN Spatial Analysis</strong> comparing Euclidean and Haversine distance metrics, and (6) <strong>Evaluation</strong> using precision and recall metrics with ground truth validation.
                         </p>
                         
-                        <h4>Key Research Components:</h4>
+                        <h4>Research Flowchart:</h4>
+                        <div style="text-align: center; margin: 30px auto; padding: 30px 20px; background: #f8f9fa; border-radius: 10px; max-width: 600px;">
+                            <img src="../assets/images/UAV fix a.png" alt="OPEFB Detection System Flowchart" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                            <p style="margin-top: 20px; font-style: italic; color: #666; font-size: 0.95rem; text-align: center;">
+                                <strong>Figure 1.</strong> Research methodology flowchart showing the systematic process from data acquisition through image processing, color segmentation, image extraction, image analysis, to final evaluation.
+                            </p>
+                        </div>
+                        
+                        <h4>Technical Specifications:</h4>
                         <ul>
-                            <li><strong>Data Collection:</strong> Systematic aerial imaging using drone technology across multiple plantation sites</li>
-                            <li><strong>Algorithm Development:</strong> Design and optimization of modified ExG algorithm for OPEFB detection</li>
-                            <li><strong>Validation Testing:</strong> Performance evaluation under various environmental conditions</li>
-                            <li><strong>Geospatial Integration:</strong> GPS coordinate mapping for precise OPEFB location documentation</li>
+                            <li><strong>Drone Platform:</strong> DJI Phantom 4 Pro V2.0 with RGB camera and GNSS positioning</li>
+                            <li><strong>Image Resolution:</strong> 4864 × 3648 pixels (vertical/nadir capture)</li>
+                            <li><strong>Camera Settings:</strong> Shutter speed 1/800s, ISO 400, optimal shadow and highlight balance</li>
+                            <li><strong>Flight Height:</strong> 40 meters altitude for comprehensive area coverage</li>
+                            <li><strong>Data Format:</strong> JPG images with embedded geotag (latitude, longitude) metadata</li>
+                            <li><strong>Processing Pipeline:</strong> 40+ stages from raw acquisition to final spatial evaluation</li>
                         </ul>
+                        
+                        <h4>Algorithm Innovation - Modified ExG:</h4>
+                        <p>The research introduces a modified Excess Green Index formula optimized for OPEFB detection:</p>
+                        <div class="code-block" style="background: #f8f9fa; padding: 15px; border-left: 4px solid var(--accent-color); margin: 15px 0;">
+                            <code style="display: block; margin-bottom: 10px;"><strong>Standard ExG:</strong> ExG = 2G - R - B</code>
+                            <code style="display: block; color: var(--primary-color);"><strong>Modified ExG:</strong> ExG = 2.4375 × G - (R + B)</code>
+                        </div>
+                        <p>Where G (Green Channel), R (Red Channel), and B (Blue Channel) are extracted from RGB aerial imagery. The coefficient 2.4375 was empirically determined through extensive testing to maximize sensitivity to OPEFB color characteristics under tropical lighting conditions with varying shadows and canopy coverage.</p>
                         <h3>Detection Results Visualization</h3>
                         <p>The following are examples of OPEFB detection results on aerial images, with detected areas visually marked and accompanied by GPS coordinate data.</p>
                         <div class="detection-results-section">
@@ -68,46 +90,115 @@
                     </div>
 
                     <div class="detail-section">
-                        <h2>Results & Discussion</h2>
+                        <h2>Results & Performance Evaluation</h2>
+                        
+                        <h3>Detection Accuracy Metrics</h3>
+                        <p>The system was evaluated using precision and recall metrics comparing two spatial clustering approaches:</p>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 15px;">Spatial Clustering Methods Comparison:</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+                                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 3px solid #4a6fa5;">
+                                    <h5 style="margin-bottom: 10px; color: #4a6fa5;">Euclidean Distance Method</h5>
+                                    <p style="margin: 5px 0;"><strong>Precision:</strong> 0.1043 (10.43%)</p>
+                                    <p style="margin: 5px 0;"><strong>Recall:</strong> 0.2124 (21.24%)</p>
+                                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Pixel-based distance calculation within image coordinate system</p>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 3px solid var(--accent-color);">
+                                    <h5 style="margin-bottom: 10px; color: var(--accent-color);">Haversine Distance Method ⭐</h5>
+                                    <p style="margin: 5px 0;"><strong>Precision:</strong> 0.2174 (21.74%)</p>
+                                    <p style="margin: 5px 0;"><strong>Recall:</strong> 0.5081 (50.81%)</p>
+                                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">GPS coordinate-based geographic distance calculation (WGS84)</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; padding: 12px; background: #e8f4f8; border-radius: 5px; border-left: 3px solid var(--accent-color);">
+                                <strong>Key Finding:</strong> The Haversine distance method demonstrated significantly better performance with 21.74% precision and 50.81% recall compared to Euclidean's 10.43% precision and 21.24% recall. This indicates that geographic coordinate-based spatial clustering is more accurate for real-world OPEFB detection in field conditions.
+                            </p>
+                        </div>
+                        
+                        <h3>DBSCAN Spatial Clustering Parameters</h3>
                         <ul>
-                            <li><strong>Detection Accuracy:</strong> The system achieved up to 22% detection precision and 51% recall under various lighting and weather conditions.</li>
-                            <li><strong>Time Efficiency:</strong> Manual inspection time was reduced by up to 75%, from 8 hours to 2 hours per 100 hectares.</li>
-                            <li><strong>Environmental Impact:</strong> OPEFB waste management became more targeted, supporting its use for mulch and compost.</li>
+                            <li><strong>Epsilon (ε):</strong> Maximum neighborhood distance for point clustering</li>
+                            <li><strong>MinPts:</strong> Minimum points required to form a cluster (density threshold)</li>
+                            <li><strong>Distance Metrics:</strong> Euclidean (pixel-based) vs Haversine (GPS-based geographic distance)</li>
+                            <li><strong>Convex Hull Formation:</strong> Cluster boundary generation for spatial representation</li>
+                            <li><strong>GSD Calculation:</strong> Ground Sampling Distance conversion for accurate spatial measurement (see Technical Implementation section for detailed formula)</li>
                         </ul>
-                        <p>
-                            The system has been tested in several oil palm plantations in Bogor Regency and has proven effective in automatically detecting and mapping OPEFB locations. The results of this research have also been registered as a HaKI patent and published in a community service journal.
-                        </p>
+                        
+                        <h3>Field Validation Results</h3>
+                        <ul>
+                            <li><strong>Processing Coverage:</strong> 61 JPG images covering OPEFB accumulation zones in Desa Wirajaya plantation areas</li>
+                            <li><strong>Validation Method:</strong> Ground truth comparison using manual field observation and annotation by plantation experts</li>
+                            <li><strong>Spatial Precision:</strong> Sub-centimeter GSD accuracy (≈1.23 cm/pixel horizontal, ≈1.09 cm/pixel vertical) at 40m altitude</li>
+                        </ul>
                     </div>
 
                     <div class="detail-section">
                         <h2>Technical Implementation</h2>
-                        <h3>Modified Excess Green Index (ExG) Algorithm</h3>
-                        <p>The core innovation lies in our modified ExG formula optimized for OPEFB detection:</p>
-                        <div class="code-block">
-                            <code>Standard ExG = 2 * G - R - B</code>
-                            <code>Modified ExG = 2.4375 * G - (R + B)</code>
-                        </div>
-                        <p>Where G, R, and B are the green, red, and blue channels of the image. The coefficient 2.4375 was determined through extensive testing to provide optimal sensitivity to OPEFB color characteristics under various lighting conditions.</p>
                         
-                        <h3>System Architecture & Processing Pipeline</h3>
+                        <h3>Image Preprocessing Pipeline</h3>
+                        <p>The initial stage converts RGB drone imagery to HSV color space for robust segmentation:</p>
                         <ol>
-                            <li><strong>Image Acquisition Module:</strong> Drone-based capture with metadata extraction</li>
-                            <li><strong>Pre-processing Engine:</strong> Noise reduction, normalization, and contrast enhancement</li>
-                            <li><strong>ExG Calculation Core:</strong> Application of modified ExG algorithm with optimized coefficients</li>
-                            <li><strong>Adaptive Thresholding:</strong> Dynamic threshold calculation for varying lighting conditions</li>
-                            <li><strong>Morphological Operations:</strong> Erosion and dilation for region refinement</li>
-                            <li><strong>Contour Detection:</strong> Boundary identification and object classification</li>
-                            <li><strong>Geospatial Mapping:</strong> GPS integration and coordinate transformation</li>
-                            <li><strong>Visualization Output:</strong> Annotated imagery with detection overlays</li>
+                            <li><strong>Color Space Conversion:</strong> RGB to HSV using cv2.cvtColor() function for enhanced color channel separation</li>
+                            <li><strong>V-Channel Normalization:</strong> Value channel extraction and normalization to [0, 1] range for consistent lighting conditions</li>
+                            <li><strong>Pallet Function Application:</strong> Color enhancement through Hue (H) and Saturation (S) channel manipulation</li>
+                            <li><strong>Channel Reintegration:</strong> Normalized V-channel merged back for optimal ExG segmentation</li>
                         </ol>
+                        
+                        <h3>Modified Excess Green Index (ExG) Algorithm</h3>
+                        <p>The core innovation for color-based OPEFB segmentation:</p>
+                        <div class="code-block">
+                            <code>ExG = 2.4375 × G - (R + B)</code>
+                        </div>
+                        <p>Where G (Green), R (Red), and B (Blue) are RGB channel values. The coefficient 2.4375 maximizes non-vegetative object dominance (brownish OPEFB) while minimizing green canopy interference. This threshold-based approach effectively separates OPEFB piles from oil palm foliage under tropical lighting with varying shadows.</p>
+                        
+                        <h3>Image Extraction & Binary Conversion</h3>
+                        <p>Post-ExG processing for spatial object representation:</p>
+                        <ul>
+                            <li><strong>Thresholding:</strong> Binary image generation separating OPEFB (foreground) from background using adaptive thresholding techniques</li>
+                            <li><strong>Morphological Filtering:</strong> Noise removal and small irrelevant object elimination through erosion and dilation operations</li>
+                            <li><strong>Edge Detection (Canny):</strong> Contour boundary delineation using Canny edge detection algorithm for precise object border identification</li>
+                            <li><strong>Non-local Means Filtering:</strong> Denoising while preserving OPEFB pile edge structures and geometric integrity</li>
+                        </ul>
+                        
+                        <h3>Contour Extraction & Spatial Clustering</h3>
+                        <p>The system identifies and groups detected OPEFB regions using advanced spatial analysis:</p>
+                        <ol>
+                            <li><strong>Outer Contour Extraction:</strong> Detection of object boundaries from binary segmentation results</li>
+                            <li><strong>Centroid Calculation:</strong> Geometric center point determination for each detected OPEFB cluster</li>
+                            <li><strong>GPS Coordinate Conversion:</strong> Transformation from pixel coordinates to WGS84 geographic coordinates using embedded GNSS metadata</li>
+                            <li><strong>DBSCAN Clustering:</strong> Density-based spatial grouping to merge nearby detections and form meaningful OPEFB pile clusters</li>
+                            <li><strong>Convex Hull Formation:</strong> Cluster boundary polygon generation for area calculation and spatial representation</li>
+                        </ol>
+                        
+                        <h3>DBSCAN Algorithm Configuration</h3>
+                        <p>Density-Based Spatial Clustering of Applications with Noise (DBSCAN) parameters for OPEFB pile grouping. The system uses Haversine distance metric for GPS coordinate-based geographic distance calculation (WGS84 ellipsoid model), which demonstrated superior performance compared to pixel-based Euclidean distance (see Results section for detailed comparison).</p>
+                        
+                        <h3>Ground Sampling Distance (GSD) Calculation</h3>
+                        <p>Critical for converting pixel measurements to real-world metric distances:</p>
+                        <div class="code-block" style="background: #f8f9fa; padding: 15px; border-left: 4px solid var(--primary-color); margin: 15px 0;">
+                            <code style="display: block; margin-bottom: 8px;">GSD<sub>h</sub> = (H × s) / (f × l<sub>v</sub>)</code>
+                            <code style="display: block; margin-bottom: 8px;">GSD<sub>v</sub> = (H × s) / (f × l<sub>h</sub>)</code>
+                            <p style="margin-top: 15px; margin-bottom: 5px; font-weight: 600;">Where:</p>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>H</strong> = Drone altitude (40 meters)</li>
+                                <li><strong>s</strong> = Camera sensor width/height (13.2mm × 8.8mm)</li>
+                                <li><strong>f</strong> = Focal length of camera lens</li>
+                                <li><strong>l<sub>v</sub></strong> = Vertical image resolution (3648 pixels)</li>
+                                <li><strong>l<sub>h</sub></strong> = Horizontal image resolution (4864 pixels)</li>
+                            </ul>
+                        </div>
+                        <p><strong>Calculated GSD Values:</strong> GSD<sub>h</sub> ≈ 0.0123 m/px and GSD<sub>v</sub> ≈ 0.0109 m/px, enabling precise spatial measurements and area calculations for detected OPEFB clusters.</p>
                         
                         <h3>Technology Stack & Implementation</h3>
                         <ul>
-                            <li><strong>Programming Language:</strong> Python 3.8+ for core algorithm development</li>
-                            <li><strong>Computer Vision:</strong> OpenCV for image processing operations</li>
-                            <li><strong>Geospatial Processing:</strong> GDAL and GeoPandas for coordinate handling</li>
-                            <li><strong>Data Processing:</strong> NumPy and SciPy for numerical computations</li>
-                            <li><strong>Visualization:</strong> Matplotlib for presenting model evaluation results</li>
+                            <li><strong>Programming Language:</strong> Python 3.8+ for algorithm development and automation</li>
+                            <li><strong>Computer Vision:</strong> OpenCV (cv2) for image processing, color space conversion, filtering, and contour detection</li>
+                            <li><strong>Spatial Analysis:</strong> DBSCAN clustering algorithm for density-based spatial grouping</li>
+                            <li><strong>Geospatial Processing:</strong> GDAL and GeoPandas for coordinate transformation (WGS84-EPSG:4326) and GIS integration</li>
+                            <li><strong>Data Processing:</strong> NumPy for array operations and SciPy for scientific computing</li>
+                            <li><strong>Visualization:</strong> Matplotlib for detection visualization and performance evaluation charts</li>
+                            <li><strong>Coordinate Systems:</strong> WGS84 (EPSG:4326) for GPS data, custom GSD for pixel-to-meter conversion</li>
                         </ul>
                         
                         <h3>GIS Integration & Output Formats</h3>
@@ -143,20 +234,49 @@
                         <h2>Research & Academic Contributions</h2>
                         <p>OPEFB-Detection-System represents a contribution to agricultural technology research, with ongoing academic publications and intellectual property applications. This research addresses critical challenges in the Indonesian palm oil industry, which is one of the world's largest producers of palm oil.</p>
                         
-                        <h3>Academic Publications & Research Context</h3>
+                        <!-- <h3>Academic Publications & Research Context</h3>
+                        <div style="background: #fff3cd; padding: 20px; border-left: 4px solid #ffc107; border-radius: 8px; margin: 20px 0;">
+                            <h4 style="color: #856404; margin-bottom: 10px;"><i class="fas fa-file-alt"></i> Journal Publication Status: Under Review</h4>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>Title:</strong> "Identifikasi Tandan Kosong Kelapa Sawit Menggunakan Excess Green Index dan Algoritma DBSCAN Berbasis Citra Drone"</li>
+                                <li><strong>Journal:</strong> JURIKOM (Jurnal Riset Komputer), Vol. 99 No. 99</li>
+                                <li><strong>Publisher:</strong> Universitas Pattimura, Ambon - SINTA 3 Accredited</li>
+                                <li><strong>e-ISSN:</strong> 2715-7393 (Media Online), p-ISSN 2407-389X (Media Cetak)</li>
+                                <li><strong>DOI:</strong> 10.30865/jurikom.v10i3.e264 (Pending Publication)</li>
+                                <li><strong>Status:</strong> Manuscript under peer review process</li>
+                            </ul>
+                        </div>
                         <ul>
-                            <li><strong>SINTA 3 Journal Publication (On Review) :</strong> "Identifikasi Tandan Kosong Kelapa Sawit Menggunakan Excess Green Index dan Algoritma DBSCAN Berbasis Citra Drone" (JURIKOM, 2025)</li>
-                            <li><strong>Research Focus:</strong> Computer vision applications in precision agriculture and waste management for tropical agricultural systems</li>
-                            <li><strong>Methodology:</strong> Modified Excess Green Index algorithm specifically optimized for OPEFB detection in Indonesian plantation conditions</li>
-                            <li><strong>Academic Significance:</strong> First documented application of modified ExG for OPEFB detection in peer-reviewed literature</li>
-                        </ul>
+                            <li><strong>Authors:</strong> Asep Denih¹, Ema Kurnia², Irma Anggrasni³, Gustian Rama Putra¹, Pilar Kukuh Bintang Rachmadi¹</li>
+                            <li><strong>Affiliations:</strong> 
+                                <ul style="margin-left: 20px; margin-top: 5px;">
+                                    <li>¹ Faculty of Mathematics and Natural Sciences, Ilmu Komputer, Universitas Pakuan, Bogor</li>
+                                    <li>² Faculty of Agriculture, Universitas Pakuan, Bogor</li>
+                                </ul>
+                            </li>
+                            <li><strong>Research Location:</strong> Desa Wirajaya, Kecamatan Jasinga, Kabupaten Bogor, Indonesia</li>
+                            <li><strong>Research Focus:</strong> Computer vision applications in precision agriculture and sustainable waste management for tropical oil palm plantations</li>
+                            <li><strong>Methodology:</strong> Modified Excess Green Index (ExG = 2.4375 × G - (R + B)) combined with DBSCAN spatial clustering specifically optimized for Indonesian plantation conditions</li>
+                            <li><strong>Academic Significance:</strong> First documented application of modified ExG coefficient combined with DBSCAN for OPEFB detection in peer-reviewed Indonesian agricultural computer vision literature</li>
+                        </ul> -->
                         
                         <h3>Intellectual Property & Innovation</h3>
+                        <div style="background: #d4edda; padding: 20px; border-left: 4px solid #28a745; border-radius: 8px; margin: 20px 0;">
+                            <h4 style="color: #155724; margin-bottom: 10px;"><i class="fas fa-certificate"></i> HaKI Patent Status: Granted & Registered</h4>
+                            <ul style="margin-left: 20px; line-height: 1.8;">
+                                <li><strong>Patent Title:</strong> "Pengoperasian Program Deteksi Otomatis Perkiraan Lokasi Tandan Kosong Kelapa Sawit Berbasis Citra Udara"</li>
+                                <li><strong>Registration Number:</strong> EC00202484498</li>
+                                <li><strong>Copyright Type:</strong> Program Komputer (Computer Program)</li>
+                                <li><strong>Registration Date:</strong> July 5, 2025</li>
+                                <li><strong>Granting Authority:</strong> Direktorat Jenderal Kekayaan Intelektual (DJKI), Kementerian Hukum dan HAM Republik Indonesia</li>
+                                <li><strong>Verification:</strong> <a href="https://hakcipta.dgip.go.id/legal/c/N2JjMDVmMjRiN2UyMWJlNmU4ZTY3Zjc3NDI4YTQ0YmI=" target="_blank" style="color: #155724; text-decoration: underline;">View Official HaKI Certificate</a></li>
+                            </ul>
+                        </div>
                         <ul>
-                            <li><strong>Patent Registration:</strong> "Pengoperasian Program Deteksi Otomatis Perkiraan Lokasi Tandan Kosong Kelapa Sawit Berbasis Citra Udara" - successfully registered with HaKI (Hak Kekayaan Intelektual)</li>
-                            <li><strong>Commercial Application:</strong> Patent protection enables licensing opportunities for widespread industry deployment</li>
-                            <li><strong>Technology Transfer Potential:</strong> Ready for commercialization and technology transfer to agricultural technology companies</li>
-                            <li><strong>Competitive Advantage:</strong> Novel approach that outperforms existing manual detection methods by 75% in time efficiency</li>
+                            <li><strong>Commercial Application:</strong> Patent protection enables licensing opportunities for widespread agricultural technology industry deployment</li>
+                            <li><strong>Technology Transfer Potential:</strong> Ready for commercialization and technology transfer to agritech companies, plantation management systems, and precision agriculture service providers</li>
+                            <li><strong>Competitive Advantage:</strong> Novel modified ExG coefficient (2.4375) combined with DBSCAN clustering provides unique approach not documented in existing OPEFB detection systems</li>
+                            <li><strong>Scalability:</strong> System architecture designed for multi-plantation deployment with cloud-based processing capabilities</li>
                         </ul>
                         
                         <h3>Research Impact & Academic Recognition</h3>
@@ -169,29 +289,30 @@
                     </div>
 
                     <div class="detail-section">
-                        <h2>Results and Impact</h2>
-                        <p>The OPEFB-Detection-System has been successfully demonstrating significant operational improvements and setting new standards for agricultural waste management technology.</p>
+                        <h2>Research Conclusions & Impact</h2>
                         
-                        <h3>Performance Metrics & Validation</h3>
+                        <h3>Summary of Key Findings</h3>
+                        <p>The research successfully demonstrates an automated OPEFB detection system combining modified ExG algorithm (coefficient 2.4375) with DBSCAN spatial clustering, achieving significant improvements over manual detection methods. The Haversine distance-based approach achieved 21.74% precision and 50.81% recall, significantly outperforming pixel-based Euclidean methods (10.43% precision, 21.24% recall).</p>
+                        
+                        <h3>Practical Implementation Benefits</h3>
+                        <p>The system provides tangible operational improvements for plantation management:</p>
                         <ul>
-                            <li><strong>Detection Accuracy:</strong> Achieved 22% precision and 51% recall in identifying OPEFB piles from aerial imagery under various lighting and weather conditions</li>
-                            <li><strong>Time Efficiency:</strong> Reduced manual inspection time by approximately 75%, from 8 hours to 2 hours per 100-hectare area</li>
-                            <li><strong>Environmental Impact:</strong> Improved waste management practices, leading to better utilization of OPEFB for mulching and composting applications</li>
+                            <li><strong>Field Navigation:</strong> GPS coordinates enable farming groups to locate OPEFB piles efficiently, reducing search time and improving collection logistics</li>
+                            <li><strong>Resource Optimization:</strong> Targeted waste collection reduces fuel consumption and operational costs compared to manual area-wide inspections</li>
+                            <li><strong>Environmental Management:</strong> Improved OPEFB tracking supports sustainable practices including strategic mulching and composting operations</li>
+                            <li><strong>Decision Support:</strong> GIS-compatible outputs (QGIS, Google Earth) enable data-driven plantation management and waste cleanup planning</li>
+                            <li><strong>Temporal Monitoring:</strong> Regular aerial surveys enable tracking of OPEFB accumulation patterns over time for proactive waste management</li>
                         </ul>
                         
-                        <h3>Technological Innovation & Future Development</h3>
-                        <p>The project continues to evolve with cutting-edge enhancements planned for broader agricultural applications:</p>
-                        
+                        <h3>Future Research Directions</h3>
+                        <p>Potential enhancements to expand system capabilities and accuracy:</p>
                         <ul>
-                            <li><strong>AI Integration:</strong> Development of deep learning models for enhanced detection accuracy in challenging conditions</li>
-                            <li><strong>Drone Automation:</strong> Integration with autonomous drone systems for fully automated data collection workflows</li>
-                            <li><strong>Mobile Platform:</strong> Development of mobile application for field technicians with offline processing capabilities</li>
-                            <li><strong>Volume Estimation:</strong> Advanced algorithms for quantitative assessment of OPEFB volume for better resource planning</li>
-                            <li><strong>Advanced GIS Integration:</strong> Real-time streaming of detection results to enterprise GIS platforms with automated spatial analysis and alert systems</li>
-                            <li><strong>Multi-crop Application:</strong> Expansion to other agricultural waste detection applications beyond palm oil</li>
-                            <li><strong>IoT Integration:</strong> Real-time monitoring system integration with plantation management IoT infrastructure</li>
-                            <li><strong>Precision Mapping:</strong> Enhanced geolocation accuracy for precision agriculture applications with sub-meter precision</li>
-                            <li><strong>Cloud GIS Services:</strong> Integration with cloud-based GIS platforms for scalable multi-plantation monitoring and data analytics</li>
+                            <li><strong>Deep Learning Enhancement:</strong> CNN model integration for improved detection accuracy under diverse lighting and weather conditions</li>
+                            <li><strong>Multi-spectral Imaging:</strong> Thermal and infrared sensor integration for enhanced OPEFB detection in dense canopy areas</li>
+                            <li><strong>Real-time Processing:</strong> Edge computing implementation for on-board drone processing with immediate field feedback</li>
+                            <li><strong>Volume Estimation:</strong> 3D reconstruction algorithms for accurate OPEFB pile volume calculations and resource planning</li>
+                            <li><strong>Mobile Application:</strong> Field-ready smartphone app for ground validation, real-time cluster verification, and offline processing</li>
+                            <li><strong>Automated Flight Planning:</strong> Integration with drone mission planning systems for systematic area coverage and autonomous operation</li>
                         </ul>
                     </div>
 
@@ -233,12 +354,14 @@
                         <div class="meta-item">
                             <h3>Project Info</h3>
                             <ul>
-                                <li><strong>Project Type:</strong> Computer Vision Research</li>
-                                <li><strong>Duration:</strong> 4 months</li>
-                                <li><strong>Research Status:</strong> Completed</li>
-                                <li><strong>Publication Status:</strong> JURIKOM (Jurnal Riset Komputer), accredited SINTA 3 (Under Review)</li>
-                                <li><strong>Patent Status:</strong> HaKI Licensed & Registered</li>
-                                <li><strong>Access:</strong> Private (Journal Under Review)</li>
+                                <li><strong>Project Type:</strong> Computer Vision & Spatial Analysis Research</li>
+                                <li><strong>Research Duration:</strong> 2024</li>
+                                <li><strong>Research Location:</strong> Desa Wirajaya, Jasinga, Bogor</li>
+                                <li><strong>Research Status:</strong> Completed & Field-Validated</li>
+                                <li><strong>Publication Status:</strong> JURIKOM (SINTA 3) - Under Review</li>
+                                <li><strong>Patent Status:</strong> HaKI Granted (EC00202484498)</li>
+                                <li><strong>Registration Date:</strong> July 5, 2025</li>
+                                <li><strong>Repository Access:</strong> Private (Under Journal Review)</li>
                                 <li><strong>Last Updated:</strong> July 2025</li>
                             </ul>
                         </div>
@@ -246,23 +369,31 @@
                         <div class="meta-item">
                             <h3>Technologies Used</h3>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>OpenCV</span>
+                                <span>Python 3.8+</span>
+                                <span>OpenCV (cv2)</span>
+                                <span>DBSCAN</span>
                                 <span>NumPy</span>
+                                <span>SciPy</span>
                                 <span>Matplotlib</span>
-                                <span>Geopandas</span>
+                                <span>GeoPandas</span>
+                                <span>GDAL</span>
+                                <span>DJI Phantom 4 Pro</span>
+                                <span>GNSS/GPS</span>
                             </div>
                         </div>
                         
                         <div class="meta-item">
                             <h3>Key Contributions</h3>
                             <ul>
-                                <li>Development of modified ExG algorithm</li>
-                                <li>Image processing pipeline implementation</li>
-                                <li>Testing and validation in real plantation environments</li>
-                                <li>Academic research documentation (SINTA 3)</li>
-                                <li>Patent application for innovative detection system</li>
-                                <li>Documentation and deployment guides</li>
+                                <li>Modified ExG algorithm (coefficient 2.4375)</li>
+                                <li>DBSCAN spatial clustering integration</li>
+                                <li>Haversine vs Euclidean distance comparison</li>
+                                <li>GPS coordinate transformation (WGS84)</li>
+                                <li>GSD calculation methodology</li>
+                                <li>Field validation in Bogor plantations</li>
+                                <li>SINTA 3 journal manuscript (under review)</li>
+                                <li>HaKI patent registration & approval</li>
+                                <li>GIS platform integration (QGIS, Google Earth)</li>
                             </ul>
                         </div>
                         

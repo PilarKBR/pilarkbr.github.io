@@ -18,8 +18,15 @@
     <!-- Project Header -->
     <header class="project-header">
         <div class="container">
+            <div class="award-banner">
+                <i class="fas fa-trophy"></i>
+                <span>🥉 3rd Place Winner - IEOM Undergraduate Student Paper Competition (Sponsored by Siemens)</span>
+            </div>
             <h1>PredWeatherMarkov</h1>
-            <p>Academic research project on weather prediction using Markov chain models implemented in C++, with mobile interface in Dart. Research results presented in scientific poster format.</p>
+            <p class="project-subtitle">
+                <strong>Award-Winning Research:</strong> Weather Forecasting Using Markov Chains in Bogor City - Software Implementation for Predicting Weather Patterns
+            </p>
+            <p>Groundbreaking research combining statistical modeling with practical mobile application development. Presented at the 6th Asia Pacific International Conference on Industrial Engineering and Operations Management (IEOM), Bali, Indonesia (August 5-7, 2025).</p>
         </div>
     </header>
 
@@ -29,8 +36,35 @@
             <div class="details-grid">
                 <div class="project-content">
                     <div class="detail-section">
+                        <div class="achievement-highlight">
+                            <div class="achievement-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>🏆 International Recognition</h3>
+                                <p><strong>3rd Place Winner</strong> - IEOM Undergraduate Student Paper Competition</p>
+                                <p><strong>Sponsored by:</strong> Siemens</p>
+                                <p><strong>Conference:</strong> 6th Asia Pacific International Conference on Industrial Engineering and Operations Management</p>
+                                <p><strong>Location:</strong> Warmadewa University (UNWAR), Bali, Indonesia</p>
+                                <p><strong>Date:</strong> August 5-7, 2025</p>
+                                <p><strong>Co-Authors:</strong> Bandar Anzari, Hagni Wijayanti</p>
+                                <div class="achievement-links">
+                                    <a href="https://ieomsociety.org/bali2025/" target="_blank" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-external-link-alt"></i> Conference Website
+                                    </a>
+                                    <a href="https://ieomsociety.org/documents/awards-bali2025.pdf" target="_blank" class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-certificate"></i> View Award Announcement
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <h2>Research Overview</h2>
-                        <p>PredWeatherMarkov is an academic research project focused on applying Markov chain models for weather pattern prediction in tropical regions. This study combines rigorous statistical modeling and practical implementation, resulting in a scientifically validated weather prediction system accessible through a dedicated mobile application.</p>
+                        <p><strong>PredWeatherMarkov</strong> is an award-winning academic research project that earned <strong>3rd Place in the IEOM Undergraduate Student Paper Competition</strong>, sponsored by <strong>Siemens</strong>, at the prestigious 6th Asia Pacific International Conference on Industrial Engineering and Operations Management in Bali, Indonesia (August 5-7, 2025).</p>
+                        
+                        <p>This study presents the development and implementation of a Markov Chain-based model to analyze and forecast daily rainfall patterns in Bogor City, Indonesia, a region known for its high precipitation. Using daily rainfall data from July 22, 2024, to July 21, 2025, the rainfall intensities were classified into five categories according to BMKG standards: <strong>No Rain, Light Rain, Moderate Rain, Heavy Rain, and Very Heavy Rain</strong>.</p>
+                        
+                        <p>A transition probability matrix was constructed by calculating the relative frequencies of state changes, and multi-step predictions were generated using the Chapman-Kolmogorov equation. The model reached a <strong>steady state after 16 iterations</strong>, with results showing an <strong>accuracy of 60%, a recall of 100%, and a precision of 55.56%</strong>. These findings indicate that the model performs well in identifying rainfall events, especially light rain, but also produces a notable number of false positives.</p>
                         
                         <h3>Application Interface Visualization</h3>
                         <p>The images below display the mobile interface of <strong>PredWeatherMarkov</strong>, which implements the Markov chain-based weather prediction model. The app is designed to provide an intuitive user experience for accessing real-time weather forecasts and insights.</p>
@@ -46,24 +80,34 @@
                         
                         <p><em>The application interface presents Markov chain-based weather predictions, visualizations of weather patterns, prediction accuracy metrics, and historical data analysis tailored for the Bogor region.</em></p>
                         
-                        <h3>Research Contributions</h3>
+                        <h3>Research Contributions & Impact</h3>
                         <ul>
-                            <li><strong>Markov Chain Weather Modeling:</strong> Novel application of first-order Markov chains for local weather prediction</li>
-                            <li><strong>Academic Research Documentation:</strong> Comprehensive research methodology and results analysis</li>
-                            <li><strong>Practical Implementation:</strong> Mobile application demonstrating real-world applicability</li>
-                            <li><strong>Statistical Analysis:</strong> Performance evaluation and accuracy measurement of prediction models</li>
-                            <li><strong>Cross-Platform Development:</strong> Technical implementation using Flutter/Dart</li>
+                            <li><strong>International Recognition:</strong> 🥉 3rd Place Winner at IEOM 2025 (Sponsored by Siemens)</li>
+                            <li><strong>Markov Chain Weather Modeling:</strong> Novel application of first-order Markov chains for local weather prediction in tropical regions</li>
+                            <li><strong>Comprehensive Dataset:</strong> Analysis of 365 days of daily rainfall observations (July 22, 2024 - July 21, 2025) from BMKG</li>
+                            <li><strong>Model Performance:</strong> Achieved 60% overall accuracy, 100% recall for light rain events, and 55.56% precision, with F1 Score of 71.43%</li>
+                            <li><strong>Steady State Analysis:</strong> Mathematical demonstration of long-term stability achieved after 16 iteration steps</li>
+                            <li><strong>Practical Implementation:</strong> Flutter-based mobile application called "Prediksi Curah Hujan" demonstrating real-world applicability</li>
+                            <li><strong>Statistical Rigor:</strong> Application of maximum likelihood estimation, Chi-Square test, and Chapman-Kolmogorov equation for multi-step predictions</li>
+                            <li><strong>Innovation Awards:</strong> Submitted to Bogor Innovation Awards 2025 for further recognition</li>
                         </ul>
                     </div>
 
                     <div class="detail-section">
                         <h2>Technical Architecture</h2>
                         <h3>Markov Chain Implementation</h3>
-                        <p>The core prediction engine utilizes first-order Markov chains to model weather state transitions:</p>
+                        <p>The core prediction engine utilizes first-order Markov chains to model weather state transitions. In this probabilistic approach, the future state depends only on the present state and not on the sequence of past states:</p>
                         <div class="gallery-image">
                             <img src="../assets/images/MCMC-Markov-property.png" alt="Markov Chain Equation">
                         </div>
-                        <p>Where weather states include temperature ranges, precipitation levels, and atmospheric pressure conditions.</p>
+                        <p><strong>Rainfall Classification (BMKG Standards):</strong></p>
+                        <ul>
+                            <li><strong>State 1 - No Rain (NR):</strong> 0 mm/day</li>
+                            <li><strong>State 2 - Light Rain (LR):</strong> 0.1 - 19.9 mm/day</li>
+                            <li><strong>State 3 - Moderate Rain (MR):</strong> 20.0 - 49.9 mm/day</li>
+                            <li><strong>State 4 - Heavy Rain (HR):</strong> 50.0 - 100.0 mm/day</li>
+                            <li><strong>State 5 - Very Heavy Rain (VHR):</strong> >100.0 mm/day</li>
+                        </ul>
                         
                         <h3>Technology Stack</h3>
                         <div class="tech-grid">
@@ -81,43 +125,98 @@
                         
                         <h3>System Architecture</h3>
                         <ol>
-                            <li><strong>Data Collection:</strong> Historical weather data aggregation and preprocessing</li>
-                            <li><strong>Model Training:</strong> Markov chain transition matrix calculation from historical patterns</li>
-                            <li><strong>Prediction Engine:</strong> C++ backend processing current conditions to generate forecasts</li>
-                            <li><strong>Mobile Interface:</strong> Flutter app displaying predictions with intuitive visualizations</li>
-                            <li><strong>Data Synchronization:</strong> Real-time updates and offline data management</li>
+                            <li><strong>Data Collection:</strong> 365 daily rainfall observations from BMKG platform (July 22, 2024 - July 21, 2025)</li>
+                            <li><strong>Data Categorization:</strong> Classification into five rainfall intensity groups based on BMKG standards</li>
+                            <li><strong>Transition Matrix Construction:</strong> Calculation of relative frequencies of state changes using maximum likelihood estimation</li>
+                            <li><strong>Multi-Step Prediction:</strong> Chapman-Kolmogorov equation application for long-term forecasting</li>
+                            <li><strong>Steady State Analysis:</strong> Convergence evaluation demonstrating stability after 16 iterations</li>
+                            <li><strong>Mobile Interface:</strong> Flutter-based app "Prediksi Curah Hujan" displaying predictions with interactive visualizations</li>
                         </ol>
                     </div>
 
                     <div class="detail-section">
                         <h2>Research Methodology & Results</h2>
-                        <p>The research employed rigorous statistical analysis and experimental validation to demonstrate the effectiveness of Markov chain models in weather prediction:</p>
+                        <p>The research employed rigorous statistical analysis and experimental validation following a systematic approach:</p>
                         
+                        <h3>Methodology</h3>
                         <ul>
-                            <li><strong>Prediction Capability:</strong> The application is capable of predicting weather for up to 4–5 days ahead; beyond this range, the Markov model reaches a steady state and predictions lose specificity.</li>
-                            <li><strong>Data Analysis:</strong> Comprehensive evaluation using historical weather data from BMKG (Indonesian Meteorological Agency)</li>
-                            <li><strong>Statistical Validation:</strong> Transition matrix analysis and probability distribution modeling</li>
-                            <li><strong>Academic Presentation:</strong> Research findings documented in scientific poster format</li>
-                            <li><strong>Technical Implementation:</strong> Practical demonstration through mobile application prototype</li>
+                            <li><strong>Data Collection:</strong> Secondary data from BMKG platform covering 365 consecutive days (July 22, 2024 - July 21, 2025)</li>
+                            <li><strong>Categorization:</strong> Rainfall intensities classified into five groups using BMKG official classification</li>
+                            <li><strong>Statistical Methods:</strong> 
+                                <ul>
+                                    <li>Maximum likelihood estimation for transition probabilities</li>
+                                    <li>Chi-Square test for independence evaluation of consecutive rainfall occurrences</li>
+                                    <li>Chapman-Kolmogorov equation for multi-step predictions</li>
+                                </ul>
+                            </li>
+                            <li><strong>Model Validation:</strong> Comparison of predicted vs. actual rainfall data for July 12-21, 2025</li>
+                        </ul>
+                        
+                        <h3>Performance Metrics</h3>
+                        <ul>
+                            <li><strong>Overall Accuracy:</strong> 60% (6 out of 10 predictions matched actual conditions)</li>
+                            <li><strong>Precision (Light Rain):</strong> 55.56% - Indicates the model produces a considerable number of false positives</li>
+                            <li><strong>Recall (Light Rain):</strong> 100% - All light rain events were successfully identified with no false negatives</li>
+                            <li><strong>F1 Score:</strong> 71.43% - Reflects the balance between precision and sensitivity</li>
+                            <li><strong>Steady State:</strong> Achieved after 16 iteration steps, demonstrating long-term stability</li>
+                        </ul>
+                        
+                        <h3>Key Findings</h3>
+                        <ul>
+                            <li><strong>High Recall Performance:</strong> The model is very effective at detecting light rain, minimizing the risk of missed rain events</li>
+                            <li><strong>Early Warning Capability:</strong> 100% recall makes it suitable for early warning or logistical preparation applications</li>
+                            <li><strong>Tendency to Overpredict:</strong> Lower precision (55.56%) indicates the model tends to "play it safe" by frequently predicting light rain</li>
+                            <li><strong>Seasonal Patterns:</strong> Data reveals distinct patterns - rainy season (October-March) and dry season (April-September)</li>
+                            <li><strong>Practical Limitation:</strong> Beyond 16 steps, predictions converge to steady state, requiring improvements for longer-term forecasting</li>
                         </ul>
                         
                         <h3>Research Impact</h3>
                         <p>This research contributes to the field of computational meteorology by:</p>
                         
                         <ul>
-                            <li>Demonstrating practical application of Markov chains in weather prediction for tropical regions</li>
-                            <li>Providing methodology for local weather modeling using limited historical data</li>
-                            <li>Bridging theoretical statistical models with real-world mobile applications</li>
-                            <li>Contributing to understanding of weather pattern transitions in Indonesian climate</li>
-                            <li>Establishing baseline performance metrics for further research enhancement</li>
+                            <li><strong>Tropical Climate Focus:</strong> Demonstrating practical application of Markov chains specifically for high-rainfall tropical regions like Bogor</li>
+                            <li><strong>Probabilistic Approach:</strong> Providing an alternative to deterministic weather forecasting methods applicable to other regions with similar characteristics</li>
+                            <li><strong>Resource Management:</strong> Supporting water resource management, irrigation systems, and agricultural planning decisions</li>
+                            <li><strong>Risk Mitigation:</strong> Enabling prediction and anticipation of extreme weather events such as floods or droughts</li>
+                            <li><strong>Mobile Technology Integration:</strong> Bridging mathematical modeling with mobile technology for accessible, user-friendly weather forecasting tools</li>
+                            <li><strong>Future Enhancement Framework:</strong> Establishing baseline performance metrics and methodology for future research improvements including real-time data integration and broader geographic scalability</li>
                         </ul>
                     </div>
 
+                    <div class="detail-section award-certificate-section">
+                        <div class="certificate-header">
+                            <h2>🏆 IEOM Award Certificate</h2>
+                            <p>
+                                Official award certificate for <strong>3rd Place Winner</strong> in the <strong>IEOM Undergraduate Student Paper Competition</strong> sponsored by <strong>Siemens</strong>. The paper titled <em>"ID 180 Weather Forecasting Using Markov Chains in Bogor City: Software Implementation for Predicting Weather Patterns"</em> was presented at the 6th Asia Pacific IEOM Bali, Indonesia Conference on August 7, 2025.
+                            </p>
+                            <p>
+                                <strong>DOI:</strong> <a href="https://doi.org/10.46254/AP05.20250180" target="_blank">10.46254/AP05.20250180</a><br>
+                                <strong>Publisher:</strong> IEOM Society International, USA<br>
+                                <strong>Published:</strong> August 5, 2025
+                            </p>
+                        </div>
+                        
+                        <div class="certificate-container">
+                            <div class="certificate-frame">
+                                <img src="../assets/images/Undergraduate Student Paper Competition - Bali 2025- 180 -THIRD - ONSITE.jpg" alt="IEOM 3rd Place Award Certificate - Undergraduate Student Paper Competition, sponsored by Siemens">
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-caption">
+                            <p>
+                                <strong>Award Details:</strong> This certificate recognizes the THIRD place achievement in the IEOM Undergraduate Student Paper Competition, sponsored by Siemens. The research was conducted by Bandar Anzari, Hagni Wijayanti, and Pilar Kukuh Bintang Rachmadi from the Study Program of Mathematics and Computer Science, Faculty of Mathematics and Natural Sciences, Pakuan University, Bogor, Indonesia.
+                            </p>
+                        </div>
+                    </div>
+                    
                     <div class="detail-section research-poster-section">
                         <div class="poster-header">
                             <h2>Research Poster</h2>
                             <p>
-                                The following scientific poster comprehensively documents the research findings and methodology, and was presented for the accreditation of the Mathematics Program at Pakuan University as well as the <strong>Bogor Innovation Awards 2025</strong> competition.
+                                The following scientific poster was prepared for the <strong>accreditation of the Mathematics Program at Pakuan University</strong>. This poster comprehensively documents the research methodology, findings, and statistical analysis of the weather prediction system.
+                            </p>
+                            <p>
+                                Additionally, this research has been submitted to the <strong>Bogor Innovation Awards 2025</strong> competition.
                             </p>
                         </div>
                         
@@ -129,7 +228,7 @@
                         
                         <div class="poster-caption">
                             <p>
-                                This poster was presented for the accreditation of the Mathematics Program at Pakuan University and submitted to the Bogor Innovation Awards 2025. It highlights the innovative application of Markov chains for weather prediction in Bogor, achieving 61.02% accuracy, and details the methodology, statistical analysis, and real-world impact of the research.
+                                This research poster was specifically created for the accreditation of the Mathematics Program at Pakuan University. It highlights the innovative application of Markov chains for weather prediction in Bogor, achieving 61.02% accuracy, and details the methodology, statistical analysis, and real-world impact of the research. The same research has also been submitted to the Bogor Innovation Awards 2025.
                             </p>
                         </div>
                     </div>
@@ -140,11 +239,17 @@
                         <div class="meta-item">
                             <h3>Research Info</h3>
                             <ul>
-                                <li><strong>Research Type:</strong> Academic Weather Prediction Study</li>
-                                <li><strong>Duration:</strong> 4 months</li>
-                                <li><strong>Status:</strong> Completed & Presented</li>
-                                <li><strong>Presentation:</strong> Mathematics Program Accreditation & Bogor Innovation Awards 2025</li>
-                                <li><strong>Location:</strong> Bogor, Indonesia</li>
+                                <li><strong>🏆 Award:</strong> 3rd Place - IEOM Undergraduate Student Paper Competition</li>
+                                <li><strong>Sponsor:</strong> Siemens</li>
+                                <li><strong>Conference:</strong> 6th Asia Pacific International Conference on Industrial Engineering and Operations Management (IEOM) Bali, Indonesia</li>
+                                <li><strong>DOI:</strong> <a href="https://doi.org/10.46254/AP05.20250180" target="_blank">10.46254/AP05.20250180</a></li>
+                                <li><strong>Publisher:</strong> IEOM Society International, USA</li>
+                                <li><strong>Published:</strong> August 5, 2025</li>
+                                <li><strong>Research Type:</strong> Probabilistic Weather Forecasting</li>
+                                <li><strong>Data Period:</strong> July 22, 2024 - July 21, 2025</li>
+                                <li><strong>Co-Authors:</strong> Bandar Anzari, Hagni Wijayanti</li>
+                                <li><strong>Study Location:</strong> Bogor City, Indonesia</li>
+                                <li><strong>Additional:</strong> Submitted to Bogor Innovation Awards 2025</li>
                                 <li><strong>Repository Access:</strong> Public</li>
                             </ul>
                         </div>
@@ -160,13 +265,26 @@
                         </div>
                         
                         <div class="meta-item">
+                            <h3>Key Metrics</h3>
+                            <ul>
+                                <li><strong>Accuracy:</strong> 60%</li>
+                                <li><strong>Precision:</strong> 55.56%</li>
+                                <li><strong>Recall:</strong> 100%</li>
+                                <li><strong>F1 Score:</strong> 71.43%</li>
+                                <li><strong>Steady State:</strong> 16 iterations</li>
+                                <li><strong>Dataset:</strong> 365 daily observations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="meta-item">
                             <h3>Research Contributions</h3>
                             <ul>
-                                <li>Markov chain algorithm research & implementation</li>
-                                <li>Statistical analysis and model validation</li>
-                                <li>Academic research documentation</li>
-                                <li>Mobile application prototype development</li>
-                                <li>Scientific poster presentation</li>
+                                <li>Markov chain mathematical modeling</li>
+                                <li>Transition probability matrix construction</li>
+                                <li>Chapman-Kolmogorov equation application</li>
+                                <li>Statistical validation (Chi-Square test)</li>
+                                <li>Flutter mobile application development</li>
+                                <li>Academic paper publication (DOI assigned)</li>
                             </ul>
                         </div>
                         
