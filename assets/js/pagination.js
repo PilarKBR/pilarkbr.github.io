@@ -32,7 +32,7 @@ class PaginationManager {
         }
         
         this.createControls();
-        this.showPage(1);
+        this.showPage(1, true); // Pass true to indicate initial load (no scroll)
     }
     
     createControls() {
@@ -67,7 +67,7 @@ class PaginationManager {
         this.updateControls();
     }
     
-    showPage(pageNumber) {
+    showPage(pageNumber, skipScroll = false) {
         this.currentPage = pageNumber;
         
         // Hide all items
@@ -81,11 +81,14 @@ class PaginationManager {
         pageItems.forEach(item => item.classList.add('active'));
         
         // Scroll to top of section with offset to keep pagination visible
-        const section = this.container.closest('section');
-        if (section) {
-            const yOffset = -100; // Offset to account for header
-            const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+        // Skip scroll on initial page load
+        if (!skipScroll) {
+            const section = this.container.closest('section');
+            if (section) {
+                const yOffset = -100; // Offset to account for header
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
         }
         
         this.updateControls();
